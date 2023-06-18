@@ -1,5 +1,6 @@
 package com.code.damahe.navigation.main
 
+import android.content.Context
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.code.damahe.feature.screen.AnimationScreen
@@ -8,18 +9,18 @@ import com.code.damahe.feature.screen.HomeScreen
 import com.code.damahe.feature.screen.TemplateScreen
 import com.code.damahe.feature.screen.WidgetsScreen
 import com.code.damahe.preferences.screen.PreferenceScreen
-import com.code.damahe.res.navigation.AnimationScreenNavigation.animationScreenNavRoute
-import com.code.damahe.res.navigation.DemoUIScreenNavigation.demoUIScreenNavRoute
-import com.code.damahe.res.navigation.HomeScreenNavigation.homeScreenNavRoute
-import com.code.damahe.res.navigation.PreferenceScreenNavigation.preferenceScreenNavRoute
-import com.code.damahe.res.navigation.TemplateScreenNavigation.templateScreenNavRoute
-import com.code.damahe.res.navigation.WidgetsScreenNavigation.widgetsScreenNavRoute
+import com.code.damahe.res.config.AnimationScreenNavigation.animationScreenNavRoute
+import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
+import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
+import com.code.damahe.res.config.PreferenceScreenNavigation.preferenceScreenNavRoute
+import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
+import com.code.damahe.res.config.WidgetsScreenNavigation.widgetsScreenNavRoute
 
-fun NavGraphBuilder.homeScreen(onNavigateToDestination: (String) -> Unit) {
+fun NavGraphBuilder.homeScreen(context: Context, onNavigateToDestination: (String) -> Unit, startAppActivity: (Context, String) -> Unit) {
     composable(
         route = homeScreenNavRoute,
     ) {
-        HomeScreen(onNavigateToDestination)
+        HomeScreen(context, onNavigateToDestination, startAppActivity)
     }
 }
 

@@ -1,5 +1,6 @@
 package com.code.damahe.screen
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
@@ -35,12 +36,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.compose.ui.tooling.preview.Preview
-import com.code.damahe.feature.screen.HomeScreen
 import com.code.damahe.navigation.NavAppState
 import com.code.damahe.navigation.main.MainBottomNavDest
-import com.code.damahe.theme.component.DamaheCodeBackground
-import com.code.damahe.theme.component.DamaheCodeGradientBackground
-import com.code.damahe.theme.theme.DamaheCodeAppTheme
+import com.code.damahe.theme.component.DCodeBackground
+import com.code.damahe.theme.component.DCodeGradientBackground
+import com.code.damahe.theme.theme.DCodeAppTheme
 import com.code.damahe.theme.theme.GradientColors
 import com.code.damahe.theme.theme.LocalGradientColors
 import com.code.damahe.navigation.main.NavMainHost
@@ -54,8 +54,10 @@ import com.code.damahe.res.icon.DCodeIcon.DrawableResourceIcon
 )
 @Composable
 fun NavMainScreen(
+    context: Context,
     windowSizeClass: WindowSizeClass,
     navAppState: NavAppState = rememberNavAppState(
+        context = context,
         windowSizeClass = windowSizeClass,
     )
 ) {
@@ -63,8 +65,8 @@ fun NavMainScreen(
     val shouldShowGradientBackground =
         navAppState.currentMainBottomNavDestination == MainBottomNavDest.HOME
 
-    DamaheCodeBackground {
-        DamaheCodeGradientBackground(
+    DCodeBackground {
+        DCodeGradientBackground(
             gradientColors = if (shouldShowGradientBackground) {
                 LocalGradientColors.current
             } else {
@@ -233,22 +235,22 @@ private fun NavDestination?.isMainBottomNavDestInHierarchy(destination: MainBott
     } ?: false
 
 
-@Preview(
-    showBackground = true
-)
-@Composable
-fun DefaultPreview() {
-    DamaheCodeAppTheme {
-        HomeScreen(navigateToDestination = {})
-    }
-}
+//@Preview(
+//    showBackground = true
+//)
+//@Composable
+//fun DefaultPreview() {
+//    DamaheCodeAppTheme {
+//        HomeScreen(navigateToDestination = {}, startAppActivity = {_,_ -> })
+//    }
+//}
 
 @Preview(
     showBackground = true
 )
 @Composable
 fun PreferencePreview() {
-    DamaheCodeAppTheme {
+    DCodeAppTheme {
         PreferenceScreen(onGoBack = {})
     }
 }

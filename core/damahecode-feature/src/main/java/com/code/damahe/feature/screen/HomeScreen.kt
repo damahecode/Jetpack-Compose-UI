@@ -1,5 +1,6 @@
 package com.code.damahe.feature.screen
 
+import android.content.Context
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
@@ -26,9 +27,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import com.code.damahe.res.R
+import com.code.damahe.res.config.AppActivityObject
 import com.code.damahe.res.icon.MyIcons
 import com.code.damahe.res.icon.DCodeIcon.ImageVectorIcon
-import com.code.damahe.res.navigation.PreferenceScreenNavigation.preferenceScreenNavRoute
+import com.code.damahe.res.config.PreferenceScreenNavigation.preferenceScreenNavRoute
 
 @OptIn(
     ExperimentalComposeUiApi::class,
@@ -37,7 +39,9 @@ import com.code.damahe.res.navigation.PreferenceScreenNavigation.preferenceScree
 )
 @Composable
 fun HomeScreen(
-    navigateToDestination: (String) -> Unit
+    context: Context,
+    navigateToDestination: (String) -> Unit,
+    startAppActivity: (Context, String) -> Unit
 ) {
 
     Scaffold(
@@ -51,7 +55,7 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.app_name)) },
                 navigationIcon = {
-                    IconButton(onClick = { navigateToDestination(preferenceScreenNavRoute) }
+                    IconButton(onClick = { startAppActivity(context, AppActivityObject.PREFERENCE_ACTIVITY) }
                     ) {
                         Icon(ImageVectorIcon(MyIcons.Settings).imageVector, contentDescription = stringResource(id = R.string.txt_preferences))
                     }

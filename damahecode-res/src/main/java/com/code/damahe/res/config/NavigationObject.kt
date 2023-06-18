@@ -1,4 +1,4 @@
-package com.code.damahe.res.navigation
+package com.code.damahe.res.config
 
 object HomeScreenNavigation {
     const val homeScreenNavRoute = "home_screen_route"

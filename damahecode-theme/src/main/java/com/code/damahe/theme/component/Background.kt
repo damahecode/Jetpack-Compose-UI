@@ -28,7 +28,7 @@ import kotlin.math.tan
  * @param content The background content.
  */
 @Composable
-fun DamaheCodeBackground(
+fun DCodeBackground(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
@@ -54,7 +54,7 @@ fun DamaheCodeBackground(
  * @param content The background content.
  */
 @Composable
-fun DamaheCodeGradientBackground(
+fun DCodeGradientBackground(
     modifier: Modifier = Modifier,
     gradientColors: GradientColors = LocalGradientColors.current,
     content: @Composable () -> Unit,

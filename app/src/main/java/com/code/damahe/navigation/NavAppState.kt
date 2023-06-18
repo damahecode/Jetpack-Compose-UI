@@ -1,5 +1,6 @@
 package com.code.damahe.navigation
 
+import android.content.Context
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
@@ -23,22 +24,25 @@ import com.code.damahe.navigation.main.navigateToDemoUIScreen
 import com.code.damahe.navigation.main.navigateToHomeScreen
 import com.code.damahe.navigation.main.navigateToTemplateScreen
 import com.code.damahe.navigation.main.navigateToWidgetsScreen
-import com.code.damahe.res.navigation.AnimationScreenNavigation.animationScreenNavRoute
-import com.code.damahe.res.navigation.DemoUIScreenNavigation.demoUIScreenNavRoute
-import com.code.damahe.res.navigation.HomeScreenNavigation.homeScreenNavRoute
-import com.code.damahe.res.navigation.TemplateScreenNavigation.templateScreenNavRoute
-import com.code.damahe.res.navigation.WidgetsScreenNavigation.widgetsScreenNavRoute
+import com.code.damahe.res.config.AnimationScreenNavigation.animationScreenNavRoute
+import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
+import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
+import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
+import com.code.damahe.res.config.WidgetsScreenNavigation.widgetsScreenNavRoute
 
 @Composable
 fun rememberNavAppState(
+    context: Context,
     windowSizeClass: WindowSizeClass,
     navController: NavHostController = rememberNavController(),
 ): NavAppState {
     return remember(
+        context,
         navController,
         windowSizeClass,
     ) {
         NavAppState(
+            context,
             navController,
             windowSizeClass,
         )
@@ -47,9 +51,13 @@ fun rememberNavAppState(
 
 @Stable
 class NavAppState(
+    context: Context,
     val navController: NavHostController,
     val windowSizeClass: WindowSizeClass,
 ) {
+
+    val getContext = context
+
     val currentDestination: NavDestination?
         @Composable get() = navController
             .currentBackStackEntryAsState().value?.destination

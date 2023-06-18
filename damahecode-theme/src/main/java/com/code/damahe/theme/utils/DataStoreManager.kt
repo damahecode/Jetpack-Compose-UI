@@ -34,7 +34,7 @@ class DataStoreManager(private val context: Context) {
                 PrefTheme.DARK_THEME_DARK -> DarkThemeConfig.DARK
                 else -> DarkThemeConfig.FOLLOW_SYSTEM
             },
-            useDynamicColor = it[useDynamicColorKey] ?: true
+            useDynamicColor = it[useDynamicColorKey] ?: false
         )
     }
 
