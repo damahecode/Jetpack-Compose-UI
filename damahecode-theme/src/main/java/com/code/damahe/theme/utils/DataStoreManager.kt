@@ -62,5 +62,6 @@ class DataStoreManager(private val context: Context) {
             it[useDynamicColorKey] = useDynamicColor
         }
     }
+
 }
 
