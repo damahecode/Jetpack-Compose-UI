@@ -15,20 +15,14 @@ import androidx.navigation.navOptions
 import androidx.tracing.trace
 import com.code.damahe.navigation.main.MainBottomNavDest
 import com.code.damahe.navigation.main.MainBottomNavDest.HOME
-import com.code.damahe.navigation.main.MainBottomNavDest.WIDGETS
-import com.code.damahe.navigation.main.MainBottomNavDest.ANIMATION
 import com.code.damahe.navigation.main.MainBottomNavDest.DEMO_UI
 import com.code.damahe.navigation.main.MainBottomNavDest.TEMPLATE
-import com.code.damahe.navigation.main.navigateToAnimationScreen
 import com.code.damahe.navigation.main.navigateToDemoUIScreen
 import com.code.damahe.navigation.main.navigateToHomeScreen
 import com.code.damahe.navigation.main.navigateToTemplateScreen
-import com.code.damahe.navigation.main.navigateToWidgetsScreen
-import com.code.damahe.res.config.AnimationScreenNavigation.animationScreenNavRoute
 import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
 import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
 import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
-import com.code.damahe.res.config.WidgetsScreenNavigation.widgetsScreenNavRoute
 
 @Composable
 fun rememberNavAppState(
@@ -71,8 +65,6 @@ class NavAppState(
     val currentMainBottomNavDestination: MainBottomNavDest?
         @Composable get() = when (currentDestination?.route) {
             homeScreenNavRoute -> HOME
-            widgetsScreenNavRoute -> WIDGETS
-            animationScreenNavRoute -> ANIMATION
             demoUIScreenNavRoute -> DEMO_UI
             templateScreenNavRoute -> TEMPLATE
             else -> null
@@ -115,8 +107,6 @@ class NavAppState(
 
             when (topLevelDestination) {
                 HOME -> navController.navigateToHomeScreen(topLevelNavOptions)
-                WIDGETS -> navController.navigateToWidgetsScreen(topLevelNavOptions)
-                ANIMATION -> navController.navigateToAnimationScreen(topLevelNavOptions)
                 DEMO_UI -> navController.navigateToDemoUIScreen(topLevelNavOptions)
                 TEMPLATE -> navController.navigateToTemplateScreen(topLevelNavOptions)
             }

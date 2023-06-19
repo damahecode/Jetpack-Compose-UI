@@ -4,10 +4,18 @@ import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.code.damahe.activity.PreferenceActivity
+import com.code.damahe.feature.screen.DemoUIScreen
+import com.code.damahe.feature.screen.HomeScreen
+import com.code.damahe.feature.screen.TemplateScreen
 import com.code.damahe.navigation.NavAppState
+import com.code.damahe.preferences.screen.PreferenceScreen
 import com.code.damahe.res.config.AppActivityObject
 import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
+import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
+import com.code.damahe.res.config.PreferenceScreenNavigation.preferenceScreenNavRoute
+import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
 
 @Composable
 fun NavMainHost(
@@ -23,30 +31,44 @@ fun NavMainHost(
         modifier = modifier
     ) {
 
-        homeScreen(
-            navAppState.getContext,
-            onNavigateToDestination = {
-                navAppState.navigateToDestination(it)
-            },
-            startAppActivity = { context, activityName ->
-                if (activityName == AppActivityObject.PREFERENCE_ACTIVITY) {
-                    val intent = Intent(context, PreferenceActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    context.startActivity(intent)
+        composable(
+            route = homeScreenNavRoute,
+        ) {
+            HomeScreen(
+                navAppState.getContext,
+                navigateToDestination = {
+                    navAppState.navigateToDestination(it)
+                },
+                startAppActivity = { context, activityName ->
+                    if (activityName == AppActivityObject.PREFERENCE_ACTIVITY) {
+                        val intent = Intent(context, PreferenceActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        context.startActivity(intent)
+                    }
                 }
-            }
-        )
+            )
+        }
 
-        widgetsScreen()
+        composable(
+            route = demoUIScreenNavRoute,
+        ) {
+            DemoUIScreen()
+        }
 
-        animationScreen()
+        composable(
+            route = templateScreenNavRoute,
+        ) {
+            TemplateScreen()
+        }
 
-        demoUIScreen()
-
-        templateScreen()
-
-        preferenceScreen(onGoBack = {
-            navController.popBackStack()
-        })
+        composable(
+            route = preferenceScreenNavRoute,
+        ) {
+            PreferenceScreen(
+                onGoBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
     }
 }

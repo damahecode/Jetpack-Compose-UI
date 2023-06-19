@@ -5,8 +5,6 @@
     <string name="app_name">Damahe Code Compose UI</string>
     <string name="not_connected">⚠️ You aren’t connected to the internet</string>
     <string name="txt_home">Home</string>
-    <string name="txt_widgets">Widgets</string>
-    <string name="txt_anim">Anim</string>
     <string name="txt_demo_ui">Demo UI</string>
     <string name="txt_template">Template</string>
 

@@ -3,9 +3,7 @@ package com.code.damahe.res.icon
 import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Settings
@@ -18,8 +16,6 @@ import com.code.damahe.res.R
 object MyIcons {
     val Settings = Icons.Rounded.Settings
     val Home = Icons.Default.Home
-    val Build = Icons.Default.Build
-    val PlayArrow = Icons.Default.PlayArrow
     val List = Icons.Rounded.List
     val Info = Icons.Rounded.Info
     val AccountBox = Icons.Default.AccountBox

@@ -13,14 +13,6 @@ enum class MainBottomNavDest(
         selectedIcon = ImageVectorIcon(MyIcons.Home),
         iconTextId = R.string.txt_home,
     ),
-    WIDGETS(
-        selectedIcon = ImageVectorIcon(MyIcons.Build),
-        iconTextId = R.string.txt_widgets,
-    ),
-    ANIMATION(
-        selectedIcon = ImageVectorIcon(MyIcons.PlayArrow),
-        iconTextId = R.string.txt_anim,
-    ),
     DEMO_UI(
         selectedIcon =  ImageVectorIcon(MyIcons.AccountBox),
         iconTextId = R.string.txt_demo_ui,
