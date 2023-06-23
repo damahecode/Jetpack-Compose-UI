@@ -1,4 +1,4 @@
-package com.code.damahe.feature.screen
+package com.code.damahe.feature.screen.template
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import com.code.damahe.feature.screen.ExampleScreen
 import com.code.damahe.res.R
 
 @OptIn(
@@ -27,7 +28,8 @@ import com.code.damahe.res.R
     ExperimentalMaterial3Api::class
 )
 @Composable
-fun DemoUIScreen() {
+fun ProfileScreen(onGoBack: () -> Unit) {
+
 
     Scaffold(
         modifier = Modifier.semantics {
@@ -39,7 +41,12 @@ fun DemoUIScreen() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(id = R.string.txt_demo_ui))
+                    Text(text = stringResource(id = R.string.txt_profile))
+                },
+                navigationIcon = {
+                    IconButton(onClick = onGoBack) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,

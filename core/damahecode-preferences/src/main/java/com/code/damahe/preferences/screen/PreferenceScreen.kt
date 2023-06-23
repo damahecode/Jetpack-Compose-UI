@@ -140,7 +140,6 @@ fun SettingsGroup(
         Spacer(modifier = Modifier.height(8.dp))
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            //color = Color.Transparent,
             shape = RoundedCornerShape(8),
         ) {
             Column {

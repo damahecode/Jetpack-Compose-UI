@@ -2,7 +2,6 @@ package com.code.damahe.feature.screen
 
 import android.content.Context
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -32,7 +31,6 @@ import com.code.damahe.res.icon.DCodeIcon.ImageVectorIcon
 @OptIn(
     ExperimentalComposeUiApi::class,
     ExperimentalMaterial3Api::class,
-    ExperimentalLayoutApi::class
 )
 @Composable
 fun HomeScreen(

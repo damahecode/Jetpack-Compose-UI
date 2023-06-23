@@ -78,7 +78,7 @@ fun NavMainScreen(
                 contentColor = MaterialTheme.colorScheme.onBackground,
                 contentWindowInsets = WindowInsets(0, 0, 0, 0),
                 bottomBar = {
-                    if (navAppState.shouldShowBottomBar) {
+                    if (navAppState.shouldShowBottomBar && navAppState.mainBottomNavDest.contains(navAppState.currentMainBottomNavDestination)) {
                         DCodeBottomBar(
                             destinations = navAppState.mainBottomNavDest,
                             onNavigateToDestination = navAppState::navigateToBottomNavDestination,

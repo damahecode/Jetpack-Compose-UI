@@ -24,6 +24,7 @@
     <string name="dark_mode_config_light">Light</string>
     <string name="dark_mode_config_dark">Dark</string>
 
+
     <!-- Module damahecode-preferences -->
     <string name="txt_preferences">Preferences</string>
     <string name="txt_general">General</string>
@@ -35,5 +36,9 @@
     <string name="changelog_description">What\'s new?</string>
     <string name="txt_open_source_libraries">Open Source Libraries</string>
     <string name="open_source_libraries_description">Damahe Code Compose UI is built using open source software</string>
+
+
+    <!-- Module core:damahecode-feature -->
+    <string name="txt_profile">Profile</string>
 
 </resources>

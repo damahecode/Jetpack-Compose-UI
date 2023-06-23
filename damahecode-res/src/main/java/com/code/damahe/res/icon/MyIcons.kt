@@ -22,7 +22,7 @@ object MyIcons {
 
     val Palette = R.drawable.ic_palette_24dp
     val History = R.drawable.ic_round_history_24dp
-    val Android_Head = R.drawable.ic_launcher_foreground
+    val Android_Head = R.drawable.ic_android_head_24dp
 }
 
 /**

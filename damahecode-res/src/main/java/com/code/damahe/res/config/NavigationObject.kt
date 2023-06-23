@@ -15,3 +15,7 @@ object TemplateScreenNavigation {
 object PreferenceScreenNavigation {
     const val preferenceScreenNavRoute = "preference_screen_route"
 }
+
+object ProfileScreenNavigation {
+    const val profileScreenNavRoute = "profile_screen_route"
+}
