@@ -14,10 +14,10 @@ dependencyResolutionManagement {
         maven ("https://jitpack.io")
     }
 }
-rootProject.name = "Damahe Code Compose UI"
+rootProject.name = "Damahe Code"
 include ("app")
 include(":damahecode-res")
 include(":damahecode-theme")
-include(":core:damahecode-preferences")
+include(":damahecode-preferences")
 
 include(":core:damahecode-feature")

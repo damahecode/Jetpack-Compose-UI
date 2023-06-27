@@ -10,7 +10,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.code.damahe.jetpack.compose.ui"
+        applicationId = "com.code.damahe"
         minSdk = 24
         targetSdk = 33
         versionCode = 4
@@ -65,7 +65,7 @@ dependencies {
     implementation(project(":damahecode-res"))
     implementation(project(":damahecode-theme"))
     implementation(project(":core:damahecode-feature"))
-    implementation(project(":core:damahecode-preferences"))
+    implementation(project(":damahecode-preferences"))
 
     implementation("androidx.activity:activity-compose:1.7.1")
     implementation("androidx.core:core-splashscreen:1.0.1")
