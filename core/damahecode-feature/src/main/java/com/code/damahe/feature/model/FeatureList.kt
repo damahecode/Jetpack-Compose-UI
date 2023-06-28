@@ -5,5 +5,6 @@ import com.code.damahe.res.icon.DCodeIcon
 
 data class FeatureList(
     @StringRes val name: Int,
-    val listIcon: DCodeIcon
+    val listIcon: DCodeIcon,
+    val githubUrl: String,
 )

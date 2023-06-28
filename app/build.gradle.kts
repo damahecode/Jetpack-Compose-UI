@@ -13,8 +13,8 @@ android {
         applicationId = "com.code.damahe"
         minSdk = 24
         targetSdk = 33
-        versionCode = 4
-        versionName = "4.0"
+        versionCode = 11
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

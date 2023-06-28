@@ -1,7 +1,6 @@
 package com.code.damahe.feature.screen
 
 import android.content.Context
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,12 +28,10 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.code.damahe.feature.model.FeatureList
 import com.code.damahe.feature.util.DemoDataProvider
@@ -47,7 +44,7 @@ import com.code.damahe.res.icon.DCodeIcon
 )
 @Composable
 fun TemplateScreen(
-    onClick: (Int, Context) -> Unit,
+    onClick: (FeatureList, Context) -> Unit,
 ) {
     Scaffold(
         modifier = Modifier.semantics {
@@ -65,16 +62,20 @@ fun TemplateScreen(
             )
         },
     ) { padding ->
-        TemplateScreenContent(Modifier.padding(padding), onClick)
+        FeatureListContent(
+            Modifier.padding(padding),
+            onClick,
+            DemoDataProvider.templateScreenListItems
+        )
     }
 }
 
 @Composable
-fun TemplateScreenContent(
+fun FeatureListContent(
     modifier: Modifier = Modifier,
-    onClick: (Int, Context) -> Unit,
+    onClick: (FeatureList, Context) -> Unit,
+    list: List<FeatureList>,
 ) {
-    val list = DemoDataProvider.homeScreenListItems
 
     Box(modifier = modifier.fillMaxSize()) {
         LazyColumn(
@@ -83,7 +84,7 @@ fun TemplateScreenContent(
             items(
                 items = list,
                 itemContent = {
-                    TemplateScreenListView(it, onClick)
+                    FeatureListView(it, onClick)
                 }
             )
         }
@@ -91,9 +92,9 @@ fun TemplateScreenContent(
 }
 
 @Composable
-fun TemplateScreenListView(
+fun FeatureListView(
     featureList: FeatureList,
-    onClick: (Int, Context) -> Unit,
+    onClick: (FeatureList, Context) -> Unit,
 ) {
     val context = LocalContext.current
 
@@ -101,7 +102,7 @@ fun TemplateScreenListView(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8),
-            onClick = { onClick(featureList.name, context) },
+            onClick = { onClick(featureList, context) },
         ) {
             Row(
                 modifier = Modifier.padding(10.dp),

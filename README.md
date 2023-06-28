@@ -5,7 +5,8 @@ A Collection on all Jetpack compose UI elements, Layouts, Widgets and Demo scree
 - Android Studio Flamingo or later
 
 ## App Demo
-[Google Play Store](https://play.google.com/store/apps/details?id=com.code.damahe.jetpack.compose.ui)
+```Coming soon.....```
+[Google Play Store](https://play.google.com/store/apps/details?id=com.code.damahe)
 
 ## Features
 * Material Design 3 theme and components

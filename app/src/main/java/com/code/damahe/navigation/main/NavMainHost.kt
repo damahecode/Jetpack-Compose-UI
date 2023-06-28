@@ -60,8 +60,8 @@ fun NavMainHost(
             route = templateScreenNavRoute,
         ) {
             TemplateScreen(
-                onClick = { stringId, context ->
-                    when (stringId) {
+                onClick = { featureList, context ->
+                    when (featureList.name) {
                         R.string.txt_preferences -> {
                             val intent = Intent(context, PreferenceActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

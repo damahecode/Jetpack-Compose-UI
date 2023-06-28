@@ -2,7 +2,7 @@
 
 <resources>
     <!-- Module app -->
-    <string name="app_name">Damahe Code Compose UI</string>
+    <string name="app_name">Damahe Code</string>
     <string name="not_connected">⚠️ You aren’t connected to the internet</string>
     <string name="txt_home">Home</string>
     <string name="txt_demo_ui">Demo UI</string>
@@ -35,10 +35,11 @@
     <string name="txt_changelog">Changelog</string>
     <string name="changelog_description">What\'s new?</string>
     <string name="txt_open_source_libraries">Open Source Libraries</string>
-    <string name="open_source_libraries_description">Damahe Code Compose UI is built using open source software</string>
+    <string name="open_source_libraries_description">Damahe Code is built using open source software</string>
 
 
     <!-- Module core:damahecode-feature -->
     <string name="txt_profile">Profile</string>
+    <string name="txt_day_night_theme">DayNight Theme</string>
 
 </resources>

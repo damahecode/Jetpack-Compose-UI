@@ -1,5 +1,8 @@
 package com.code.damahe.feature.screen
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -20,6 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import com.code.damahe.feature.model.FeatureList
+import com.code.damahe.feature.util.DemoDataProvider
 import com.code.damahe.res.R
 
 @OptIn(
@@ -48,12 +53,16 @@ fun DemoUIScreen() {
         }
     ) { padding ->
 
-        Column(
-            modifier = Modifier.padding(padding)
-        ) {
-
-            ExampleScreen()
-
-        }
+        FeatureListContent(
+            Modifier.padding(padding),
+            onClick = { featureList, context ->
+                val urlIntent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(featureList.githubUrl)
+                )
+                context.startActivity(urlIntent)
+            },
+            DemoDataProvider.demoUIScreenListItems
+        )
     }
 }
