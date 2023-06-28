@@ -36,7 +36,6 @@ fun NavMainHost(
             route = homeScreenNavRoute,
         ) {
             HomeScreen(
-                navAppState.getContext,
                 navigateToDestination = {
                     navAppState.navigateToDestination(it)
                 },

@@ -1,6 +1,5 @@
 package com.code.damahe.screen
 
-import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
@@ -54,10 +53,8 @@ import com.code.damahe.res.icon.DCodeIcon.DrawableResourceIcon
 )
 @Composable
 fun NavMainScreen(
-    context: Context,
     windowSizeClass: WindowSizeClass,
     navAppState: NavAppState = rememberNavAppState(
-        context = context,
         windowSizeClass = windowSizeClass,
     )
 ) {

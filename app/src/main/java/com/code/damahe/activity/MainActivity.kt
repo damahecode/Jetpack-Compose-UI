@@ -81,7 +81,6 @@ class MainActivity : ComponentActivity() {
                 disableDynamicTheming = ThemeUtil.shouldDisableDynamicTheming(themeUiState),
             ) {
                 NavMainScreen(
-                    context = applicationContext,
                     windowSizeClass = calculateWindowSizeClass(this)
                 )
             }

@@ -41,5 +41,6 @@
     <!-- Module core:damahecode-feature -->
     <string name="txt_profile">Profile</string>
     <string name="txt_day_night_theme">DayNight Theme</string>
+    <string name="txt_github">Github</string>
 
 </resources>

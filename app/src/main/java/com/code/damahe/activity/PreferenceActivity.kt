@@ -12,11 +12,8 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.code.damahe.preferences.screen.PreferenceScreen
-import com.code.damahe.theme.component.DCodeBackground
-import com.code.damahe.theme.component.DCodeGradientBackground
+import com.code.damahe.screen.NavPreferenceScreen
 import com.code.damahe.theme.theme.DCodeAppTheme
-import com.code.damahe.theme.theme.GradientColors
 import com.code.damahe.theme.utils.ThemeUtil
 import com.code.damahe.theme.viewmodel.ThemeUiState
 import com.code.damahe.theme.viewmodel.ThemeViewModel
@@ -65,15 +62,7 @@ class PreferenceActivity : ComponentActivity() {
                 androidTheme = ThemeUtil.shouldUseAndroidTheme(themeUiState),
                 disableDynamicTheming = ThemeUtil.shouldDisableDynamicTheming(themeUiState),
             ) {
-                DCodeBackground {
-                    DCodeGradientBackground(
-                        gradientColors = GradientColors()
-                    ) {
-                        PreferenceScreen(
-                            onGoBack =  { finish() }
-                        )
-                    }
-                }
+                NavPreferenceScreen(onFinish = { finish() })
             }
         }
     }

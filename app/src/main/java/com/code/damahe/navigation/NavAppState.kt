@@ -1,6 +1,5 @@
 package com.code.damahe.navigation
 
-import android.content.Context
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
@@ -26,17 +25,14 @@ import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRout
 
 @Composable
 fun rememberNavAppState(
-    context: Context,
     windowSizeClass: WindowSizeClass,
     navController: NavHostController = rememberNavController(),
 ): NavAppState {
     return remember(
-        context,
         navController,
         windowSizeClass,
     ) {
         NavAppState(
-            context,
             navController,
             windowSizeClass,
         )
@@ -45,12 +41,9 @@ fun rememberNavAppState(
 
 @Stable
 class NavAppState(
-    context: Context,
     val navController: NavHostController,
     val windowSizeClass: WindowSizeClass,
 ) {
-
-    val getContext = context
 
     val currentDestination: NavDestination?
         @Composable get() = navController
