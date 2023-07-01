@@ -1,11 +1,10 @@
 # Damahe Code Jetpack Compose UI
-A Collection on all Jetpack compose UI elements, Layouts, Widgets and Demo screens to see it's potential
+A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potential
 
 ## Requirements
 - Android Studio Flamingo or later
 
 ## App Demo
-```Coming soon.....```
 [Google Play Store](https://play.google.com/store/apps/details?id=com.code.damahe)
 
 ## Features
