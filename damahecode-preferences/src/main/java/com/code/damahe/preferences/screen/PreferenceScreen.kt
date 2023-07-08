@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -68,7 +67,6 @@ fun PreferenceScreen(
         },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = {
@@ -131,7 +129,8 @@ fun PreferenceScreen(
 fun SettingsGroup(
     @StringRes name: Int,
     // to accept only composable compatible with column
-    content: @Composable ColumnScope.() -> Unit ){
+    content: @Composable ColumnScope.() -> Unit
+){
     Column(modifier = Modifier.padding(vertical = 8.dp)) {
         Text(
             text = stringResource(id = name),

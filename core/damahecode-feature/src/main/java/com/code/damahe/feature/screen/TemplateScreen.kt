@@ -46,6 +46,9 @@ import com.code.damahe.res.icon.DCodeIcon
 fun TemplateScreen(
     onClick: (FeatureList, Context) -> Unit,
 ) {
+
+    val context = LocalContext.current
+
     Scaffold(
         modifier = Modifier.semantics {
             testTagsAsResourceId = true
@@ -65,7 +68,7 @@ fun TemplateScreen(
         FeatureListContent(
             Modifier.padding(padding),
             onClick,
-            DemoDataProvider.templateScreenListItems
+            DemoDataProvider.templateScreenListItems(context)
         )
     }
 }
@@ -78,9 +81,7 @@ fun FeatureListContent(
 ) {
 
     Box(modifier = modifier.fillMaxSize()) {
-        LazyColumn(
-            modifier = Modifier.padding(15.dp)
-        ) {
+        LazyColumn {
             items(
                 items = list,
                 itemContent = {
@@ -98,7 +99,7 @@ fun FeatureListView(
 ) {
     val context = LocalContext.current
 
-    Column(modifier = Modifier.padding(8.dp)) {
+    Column(modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)) {
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8),
@@ -131,7 +132,7 @@ fun FeatureListView(
                         .weight(1f)
                 ) {
                     Text(
-                        text = stringResource(id = featureList.name),
+                        text = featureList.name,
                         style = MaterialTheme.typography.labelLarge,
                     )
                 }

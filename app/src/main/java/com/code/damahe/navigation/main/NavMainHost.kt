@@ -61,12 +61,12 @@ fun NavMainHost(
             TemplateScreen(
                 onClick = { featureList, context ->
                     when (featureList.name) {
-                        R.string.txt_preferences -> {
+                        context.getString(R.string.txt_preferences) -> {
                             val intent = Intent(context, PreferenceActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                             context.startActivity(intent)
                         }
-                        R.string.txt_profile -> navAppState.navigateToDestination(profileScreenNavRoute)
+                        context.getString(R.string.txt_profile) -> navAppState.navigateToDestination(profileScreenNavRoute)
                     }
                 }
             )

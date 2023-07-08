@@ -1,3 +1,25 @@
+<!-- MARKDOWN LINKS -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
+[contributors-url]: https://github.com/damahecode/Jetpack-Compose-UI/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
+[forks-url]: https://github.com/damahecode/Jetpack-Compose-UI/network/members
+[stars-shield]: https://img.shields.io/github/stars/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
+[stars-url]: https://github.com/damahecode/Jetpack-Compose-UI/stargazers
+[issues-shield]: https://img.shields.io/github/issues/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
+[issues-url]: https://github.com/damahecode/Jetpack-Compose-UI/issues
+[license-shield]: https://img.shields.io/github/license/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
+[license-url]: https://github.com/damahecode/Jetpack-Compose-UI/blob/master/LICENSE
+[visitor-shield]: https://komarev.com/ghpvc/?username=damahecode&label=Visitors&style=for-the-badge
+[visitor-url]: https://github.com/damahecode/
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![Visitors][visitor-shield]][visitor-url]
+
 # Damahe Code Jetpack Compose UI
 A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potential
 

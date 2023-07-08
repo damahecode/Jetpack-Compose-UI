@@ -96,7 +96,7 @@ fun NavMainScreen(
                             ),
                         ),
                 ) {
-                    if (navAppState.shouldShowNavRail) {
+                    if (navAppState.shouldShowNavRail && navAppState.mainBottomNavDest.contains(navAppState.currentMainBottomNavDestination)) {
                         DCodeNavRail(
                             destinations = navAppState.mainBottomNavDest,
                             onNavigateToDestination = navAppState::navigateToBottomNavDestination,
