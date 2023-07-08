@@ -56,7 +56,7 @@ val profilePopularList = listOf(
 val imageTextList = listOf(
     ImageTextList(ImageVectorIcon(MyIcons.Location), "Bharat/India"),
     ImageTextList(ImageVectorIcon(MyIcons.Email), "damahecode@gmail.com"),
-    ImageTextList(ImageVectorIcon(MyIcons.AccountBox), "2 followers")
+    ImageTextList(ImageVectorIcon(MyIcons.AccountBox), "100 followers")
 )
 val moreOptionsList = listOf(
     FeatureList("Edit Profile", ImageVectorIcon(MyIcons.Edit), ""),
@@ -265,7 +265,7 @@ fun MainProfileContent() {
                 endItem = {
                     Text(
                         modifier = Modifier.padding(5.dp),
-                        text = "3"
+                        text = "24"
                     )
                 }
             )
@@ -289,7 +289,7 @@ fun MainProfileContent() {
                 endItem = {
                     Text(
                         modifier = Modifier.padding(5.dp),
-                        text = "15"
+                        text = "60"
                     )
                 }
             )
