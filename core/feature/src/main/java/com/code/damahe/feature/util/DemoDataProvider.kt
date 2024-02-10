@@ -16,6 +16,6 @@ object DemoDataProvider {
     )
 
     fun demoUIScreenListItems(context: Context) = listOf(
-        FeatureList(context.getString(R.string.txt_material_theme), DrawableResourceIcon(MyIcons.Palette), "https://github.com/damahecode/material-Theme"),
+        FeatureList(context.getString(R.string.txt_material_theme), DrawableResourceIcon(MyIcons.Palette), "https://github.com/damahecode/Material-Theme"),
     )
 }
