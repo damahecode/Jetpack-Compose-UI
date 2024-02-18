@@ -17,11 +17,12 @@ import com.code.damahe.navigation.main.MainBottomNavDest.HOME
 import com.code.damahe.navigation.main.MainBottomNavDest.DEMO_UI
 import com.code.damahe.navigation.main.MainBottomNavDest.TEMPLATE
 import com.code.damahe.navigation.main.navigateToDemoUIScreen
+import com.code.damahe.navigation.main.navigateToDestination
 import com.code.damahe.navigation.main.navigateToHomeScreen
 import com.code.damahe.navigation.main.navigateToTemplateScreen
-import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
-import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
-import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.demoUIScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.homeScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.templateScreenNavRoute
 
 @Composable
 fun rememberNavAppState(
@@ -42,7 +43,7 @@ fun rememberNavAppState(
 @Stable
 class NavAppState(
     val navController: NavHostController,
-    val windowSizeClass: WindowSizeClass,
+    private val windowSizeClass: WindowSizeClass,
 ) {
 
     val currentDestination: NavDestination?
@@ -50,10 +51,24 @@ class NavAppState(
             .currentBackStackEntryAsState().value?.destination
 
     fun navigateToDestination(route: String) {
-        navController.navigate(route)
+        trace("Navigation: $route") {
+            val topLevelNavOptions = navOptions {
+                // Pop up to the start destination of the graph to
+                // avoid building up a large stack of destinations
+                // on the back stack as users select items
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+                // Avoid multiple copies of the same destination when
+                // reSelecting the same item
+                launchSingleTop = true
+                // Restore state when reSelecting a previously selected item
+                restoreState = true
+            }
+
+            navController.navigateToDestination(route, topLevelNavOptions)
+        }
     }
-
-
 
     val currentMainBottomNavDestination: MainBottomNavDest?
         @Composable get() = when (currentDestination?.route) {
@@ -73,7 +88,7 @@ class NavAppState(
      * Map of top level destinations to be used in the TopBar, BottomBar and NavRail. The key is the
      * route.
      */
-    val mainBottomNavDest: List<MainBottomNavDest> = MainBottomNavDest.values().asList()
+    val mainBottomNavDest: List<MainBottomNavDest> = MainBottomNavDest.entries
 
     /**
      * UI logic for navigating to a top level destination in the app. Top level destinations have

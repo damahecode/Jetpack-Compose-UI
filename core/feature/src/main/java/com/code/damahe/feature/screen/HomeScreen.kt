@@ -1,42 +1,41 @@
 package com.code.damahe.feature.screen
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.safeContent
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.code.damahe.feature.model.MaterialDemo
+import com.code.damahe.feature.model.MaterialList
 import com.code.damahe.res.R
-import com.code.damahe.res.config.AppActivityObject
+import com.code.damahe.res.config.AppActivity
+import com.code.damahe.res.config.MainActivityNavigation
 import com.code.damahe.res.icon.MyIcons
 import com.code.damahe.res.icon.DCodeIcon.ImageVectorIcon
 
@@ -51,71 +50,116 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
 
+    val materialDemos = listOf(
+        MaterialDemo(
+            context.getString(R.string.txt_badge),
+            MainActivityNavigation.badgeScreenNavRoute
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_bottom_app_bar),
+            MainActivityNavigation.simpleBottomAppBarNavRoute,
+            listOf(
+                MaterialList(
+                    "SimpleBottomAppBar",
+                    MainActivityNavigation.simpleBottomAppBarNavRoute
+                ),
+                MaterialList(
+                    "BottomAppBarWithFab",
+                    MainActivityNavigation.bottomAppBarWithFabNavRoute
+                ),
+                MaterialList(
+                    "ExitAlwaysBottomAppBar",
+                    MainActivityNavigation.exitAlwaysBottomAppBarNavRoute
+                ),
+            ),
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_bottom_sheet),
+            MainActivityNavigation.modalBottomSheetNavRoute,
+            listOf(
+                MaterialList(
+                    "ModalBottomSheetSample",
+                    MainActivityNavigation.modalBottomSheetNavRoute
+                ),
+                MaterialList(
+                    "SimpleBottomSheetScaffoldSample",
+                    MainActivityNavigation.simpleBottomSheetScaffoldNavRoute
+                ),
+                MaterialList(
+                    "BottomSheetScaffoldNestedScrollSample",
+                    MainActivityNavigation.bottomSheetScaffoldNestedScrollNavRoute
+                ),
+            ),
+        ),
+    )
+
+    val clickRemember = remember { mutableStateOf("") }
+
     Scaffold(
         modifier = Modifier.semantics {
             testTagsAsResourceId = true
         },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        contentWindowInsets = WindowInsets.safeContent,
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.app_name)) },
                 navigationIcon = {
-                    IconButton(onClick = { startAppActivity(context, AppActivityObject.PREFERENCE_ACTIVITY) }
+                    IconButton(onClick = { startAppActivity(context, AppActivity.PREFERENCE_ACTIVITY) }
                     ) {
                         Icon(ImageVectorIcon(MyIcons.Settings).imageVector, contentDescription = stringResource(id = R.string.txt_preferences))
                     }
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
             )
         },
     ) { padding ->
-        //HomeScreenContent(Modifier.padding(padding))
+        Column(modifier = Modifier
+            .padding(padding)
+            .verticalScroll(rememberScrollState())) {
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .fillMaxHeight()
-                .fillMaxWidth()
-                .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(text = stringResource(id = R.string.app_name))
-            // on below line adding a spacer.
-            Spacer(modifier = Modifier.height(20.dp))
-            Button(onClick = {
-                val urlIntent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/damahecode/Jetpack-Compose-UI")
-                )
-                context.startActivity(urlIntent)
-            }) {
-                Text(
-                    text = stringResource(id = R.string.txt_github),
-                    modifier = Modifier.padding(10.dp),
-                    fontSize = 15.sp
-                )
+            materialDemos.forEach {
+                OutlinedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                        .clickable {
+                            if (it.list.isEmpty()) {
+                                navigateToDestination(it.navRoute)
+                            } else {
+                                clickRemember.value = it.name
+                            }
+                        },
+                    shape = RoundedCornerShape(8.dp),
+                ) {
+                    Text(
+                        modifier = Modifier.padding(10.dp),
+                        style = MaterialTheme.typography.titleLarge,
+                        text = it.name
+                    )
+                }
+                if (clickRemember.value == it.name) {
+                    it.list.forEach { list ->
+                        Card(
+                            modifier = Modifier.fillMaxWidth().padding(start = 25.dp, end = 15.dp, top = 10.dp)
+                                .clickable {
+                                    navigateToDestination(list.navRoute)
+                                },
+                            shape = RoundedCornerShape(8.dp),
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(10.dp),
+                                style = MaterialTheme.typography.titleLarge,
+                                text = list.name
+                            )
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-@Composable
-fun HomeScreenContent(
-    modifier: Modifier = Modifier,
-) {
-    val context = LocalContext.current
-
-    Box(modifier = modifier.fillMaxSize()) {
-        LazyColumn(
-            modifier = Modifier.testTag("HOME_SCREEN_LIST")
-        ) {
-
-        }
-    }
-
-}

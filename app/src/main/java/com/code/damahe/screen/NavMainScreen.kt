@@ -1,7 +1,5 @@
 package com.code.damahe.screen
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -10,9 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -29,28 +25,20 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.compose.ui.tooling.preview.Preview
-import com.code.damahe.material.component.DCodeBackground
-import com.code.damahe.material.component.DCodeGradientBackground
-import com.code.damahe.material.theme.DCodeAppTheme
+import com.code.damahe.material.theme.DCodeBackground
+import com.code.damahe.material.theme.DCodeGradientBackground
 import com.code.damahe.material.theme.GradientColors
 import com.code.damahe.material.theme.LocalGradientColors
 import com.code.damahe.navigation.NavAppState
 import com.code.damahe.navigation.main.MainBottomNavDest
 import com.code.damahe.navigation.main.NavMainHost
 import com.code.damahe.navigation.rememberNavAppState
-import com.code.damahe.preference.screen.PreferenceScreen
-import com.code.damahe.res.icon.DCodeIcon.ImageVectorIcon
-import com.code.damahe.res.icon.DCodeIcon.DrawableResourceIcon
+import com.code.damahe.res.icon.DrawIcon
 
-@OptIn(
-    ExperimentalLayoutApi::class
-)
 @Composable
 fun NavMainScreen(
     windowSizeClass: WindowSizeClass,
@@ -101,15 +89,11 @@ fun NavMainScreen(
                             destinations = navAppState.mainBottomNavDest,
                             onNavigateToDestination = navAppState::navigateToBottomNavDestination,
                             currentDestination = navAppState.currentDestination,
-                            modifier = Modifier
-                                .testTag("NiaNavRail")
-                                .safeDrawingPadding(),
+                            modifier = Modifier.testTag("NiaNavRail"),
                         )
                     }
 
-                    Column(Modifier.fillMaxSize()) {
-                        NavMainHost(navAppState)
-                    }
+                    NavMainHost(navAppState)
                 }
             }
         }
@@ -129,24 +113,16 @@ fun DCodeNavRail(
         header = null,
     ) {
         destinations.forEach { destination ->
+            val hasUnread = false // TODO : Add Function
             val selected = currentDestination.isMainBottomNavDestInHierarchy(destination)
             NavigationRailItem(
                 selected = selected,
                 onClick = { onNavigateToDestination(destination) },
                 icon = {
-                    when (val icon = destination.selectedIcon) {
-                        is ImageVectorIcon -> Icon(
-                            imageVector = icon.imageVector,
-                            contentDescription = null,
-                        )
-
-                        is DrawableResourceIcon -> Icon(
-                            painter = painterResource(id = icon.id),
-                            contentDescription = null,
-                        )
-                    }
+                    DrawIcon(icon = destination.selectedIcon, contentDescription = null)
                 },
                 label = { Text( text = stringResource(destination.iconTextId)) },
+                modifier = if (hasUnread) notificationDot() else Modifier,
                 colors = NavigationRailItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.onPrimaryContainer,
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -180,17 +156,7 @@ private fun DCodeBottomBar(
                 selected = selected,
                 onClick = { onNavigateToDestination(destination) },
                 icon = {
-                    when (val icon = destination.selectedIcon) {
-                        is ImageVectorIcon -> Icon(
-                            imageVector = icon.imageVector,
-                            contentDescription = null,
-                        )
-
-                        is DrawableResourceIcon -> Icon(
-                            painter = painterResource(id = icon.id),
-                            contentDescription = null,
-                        )
-                    }
+                    DrawIcon(icon = destination.selectedIcon, contentDescription = null)
                 },
                 label = { Text(text = stringResource(destination.iconTextId)) },
                 modifier = if (hasUnread) notificationDot() else Modifier,
@@ -232,22 +198,3 @@ private fun NavDestination?.isMainBottomNavDestInHierarchy(destination: MainBott
     } ?: false
 
 
-//@Preview(
-//    showBackground = true
-//)
-//@Composable
-//fun DefaultPreview() {
-//    DamaheCodeAppTheme {
-//        HomeScreen(navigateToDestination = {}, startAppActivity = {_,_ -> })
-//    }
-//}
-
-@Preview(
-    showBackground = true
-)
-@Composable
-fun PreferencePreview() {
-    DCodeAppTheme {
-        PreferenceScreen(onGoBack = {})
-    }
-}

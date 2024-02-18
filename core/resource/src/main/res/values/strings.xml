@@ -14,10 +14,10 @@
     <string name="loading">Loading…</string>
     <string name="txt_theme">Theme</string>
     <string name="brand_default">Default</string>
-    <string name="brand_android">Android</string>
-    <string name="dynamic_color_preference">Use Dynamic Color</string>
-    <string name="dynamic_color_yes">Yes</string>
-    <string name="dynamic_color_no">No</string>
+    <string name="brand_dynamic">Dynamic</string>
+    <string name="gradient_colors_preference">Use gradient colors</string>
+    <string name="gradient_colors_yes">Yes</string>
+    <string name="gradient_colors_no">No</string>
     <string name="dark_mode_preference">Dark mode preference</string>
     <string name="dark_mode_config_system_default">System default</string>
     <string name="dark_mode_config_light">Light</string>
@@ -42,5 +42,10 @@
     <string name="txt_material_theme">Material Theme</string>
     <string name="txt_github">Github</string>
     <string name="txt_login_signup">Login/Signup</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_example">Examples</string>
+    <string name="txt_badge">Badge</string>
+    <string name="txt_bottom_app_bar">Bottom App Bar</string>
+    <string name="txt_bottom_sheet">Bottom Sheet</string>
 
 </resources>

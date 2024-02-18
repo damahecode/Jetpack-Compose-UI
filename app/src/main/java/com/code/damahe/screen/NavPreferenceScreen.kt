@@ -1,7 +1,5 @@
 package com.code.damahe.screen
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -16,12 +14,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.code.damahe.material.component.DCodeBackground
-import com.code.damahe.material.component.DCodeGradientBackground
+import com.code.damahe.material.theme.DCodeBackground
+import com.code.damahe.material.theme.DCodeGradientBackground
 import com.code.damahe.material.theme.GradientColors
 import com.code.damahe.preference.screen.PreferenceScreen
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun NavPreferenceScreen(onFinish: () -> Unit) {
 
@@ -45,11 +42,9 @@ fun NavPreferenceScreen(onFinish: () -> Unit) {
                             ),
                         ),
                 ) {
-                    Column(Modifier.fillMaxSize()) {
-                        PreferenceScreen(
-                            onGoBack = onFinish
-                        )
-                    }
+                    PreferenceScreen(
+                        onGoBack = onFinish
+                    )
                 }
             }
 

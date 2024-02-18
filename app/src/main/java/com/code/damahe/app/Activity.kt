@@ -58,8 +58,8 @@ fun MainContent(themeUiState: ThemeUiState, content: @Composable () -> Unit) {
 
     DCodeAppTheme(
         darkTheme = darkTheme,
-        androidTheme = ThemeUtil.shouldUseAndroidTheme(themeUiState),
-        disableDynamicTheming = ThemeUtil.shouldDisableDynamicTheming(themeUiState),
+        themeBrand = ThemeUtil.shouldUseOtherThemeBrand(themeUiState),
+        disableGradientColors = ThemeUtil.shouldDisableGradientColors(themeUiState),
     ) {
         content()
     }

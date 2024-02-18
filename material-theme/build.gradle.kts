@@ -41,6 +41,7 @@ android {
     }
 
     composeOptions {
+        //https://developer.android.com/jetpack/androidx/releases/compose-compiler
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }

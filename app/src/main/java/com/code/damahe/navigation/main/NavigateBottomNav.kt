@@ -2,18 +2,20 @@ package com.code.damahe.navigation.main
 
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import com.code.damahe.res.config.DemoUIScreenNavigation
-import com.code.damahe.res.config.HomeScreenNavigation
-import com.code.damahe.res.config.TemplateScreenNavigation
+import com.code.damahe.res.config.MainActivityNavigation
+
+fun NavController.navigateToDestination(navRoute: String, navOptions: NavOptions? = null) {
+    this.navigate(navRoute, navOptions)
+}
 
 fun NavController.navigateToHomeScreen(navOptions: NavOptions? = null) {
-    this.navigate(HomeScreenNavigation.homeScreenNavRoute, navOptions)
+    this.navigate(MainActivityNavigation.homeScreenNavRoute, navOptions)
 }
 
 fun NavController.navigateToDemoUIScreen(navOptions: NavOptions? = null) {
-    this.navigate(DemoUIScreenNavigation.demoUIScreenNavRoute, navOptions)
+    this.navigate(MainActivityNavigation.demoUIScreenNavRoute, navOptions)
 }
 
 fun NavController.navigateToTemplateScreen(navOptions: NavOptions? = null) {
-    this.navigate(TemplateScreenNavigation.templateScreenNavRoute, navOptions)
+    this.navigate(MainActivityNavigation.templateScreenNavRoute, navOptions)
 }

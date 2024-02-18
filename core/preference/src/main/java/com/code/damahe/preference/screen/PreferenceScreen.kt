@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -61,8 +58,8 @@ fun PreferenceScreen(
     if (showThemeSettingsDialog.value) {
         ThemeDialog(
             string = ThemeString(R.string.title_app_theme, R.string.loading, R.string.ok, R.string.brand_default,
-                R.string.brand_android, R.string.dynamic_color_preference, R.string.dynamic_color_yes,
-                R.string.dynamic_color_no, R.string.dark_mode_preference, R.string.dark_mode_config_system_default,
+                R.string.brand_dynamic, R.string.gradient_colors_preference, R.string.gradient_colors_yes,
+                R.string.gradient_colors_no, R.string.dark_mode_preference, R.string.dark_mode_config_system_default,
                 R.string.dark_mode_config_light, R.string.dark_mode_config_dark),
             onDismiss = {showThemeSettingsDialog.value = false},
         )
@@ -85,7 +82,7 @@ fun PreferenceScreen(
                         Icon(MyIcons.ArrowBack, contentDescription = "Back")
                     }
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
             )

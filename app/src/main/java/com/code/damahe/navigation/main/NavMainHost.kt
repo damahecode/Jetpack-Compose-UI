@@ -10,15 +10,29 @@ import com.code.damahe.activity.PreferenceActivity
 import com.code.damahe.feature.screen.DemoUIScreen
 import com.code.damahe.feature.screen.HomeScreen
 import com.code.damahe.feature.screen.TemplateScreen
+import com.code.damahe.feature.screen.home.BadgeScreen
+import com.code.damahe.feature.screen.home.BottomAppBarWithFAB
+import com.code.damahe.feature.screen.home.BottomSheetScaffoldNestedScrollSample
+import com.code.damahe.feature.screen.home.ExitAlwaysBottomAppBar
+import com.code.damahe.feature.screen.home.ModalBottomSheetSample
+import com.code.damahe.feature.screen.home.SimpleBottomAppBar
+import com.code.damahe.feature.screen.home.SimpleBottomSheetScaffoldSample
 import com.code.damahe.feature.screen.template.LoginSignupScreen
 import com.code.damahe.feature.screen.template.ProfileScreen
 import com.code.damahe.navigation.NavAppState
-import com.code.damahe.res.config.AppActivityObject
-import com.code.damahe.res.config.HomeScreenNavigation.homeScreenNavRoute
-import com.code.damahe.res.config.DemoUIScreenNavigation.demoUIScreenNavRoute
-import com.code.damahe.res.config.LoginSignupScreenNavigation.loginSignupScreenNavRoute
-import com.code.damahe.res.config.ProfileScreenNavigation.profileScreenNavRoute
-import com.code.damahe.res.config.TemplateScreenNavigation.templateScreenNavRoute
+import com.code.damahe.res.config.AppActivity
+import com.code.damahe.res.config.MainActivityNavigation.homeScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.demoUIScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.badgeScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.bottomAppBarWithFabNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.bottomSheetScaffoldNestedScrollNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.exitAlwaysBottomAppBarNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.loginSignupScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.modalBottomSheetNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.profileScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.simpleBottomAppBarNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.simpleBottomSheetScaffoldNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.templateScreenNavRoute
 
 @Composable
 fun NavMainHost(
@@ -42,7 +56,7 @@ fun NavMainHost(
                     navAppState.navigateToDestination(it)
                 },
                 startAppActivity = { context, activityName ->
-                    if (activityName == AppActivityObject.PREFERENCE_ACTIVITY) {
+                    if (activityName == AppActivity.PREFERENCE_ACTIVITY) {
                         val intent = Intent(context, PreferenceActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         context.startActivity(intent)
@@ -50,6 +64,61 @@ fun NavMainHost(
                 }
             )
         }
+
+        composable(
+            route = badgeScreenNavRoute,
+        ) {
+            BadgeScreen(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = simpleBottomAppBarNavRoute,
+        ) {
+            SimpleBottomAppBar(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = bottomAppBarWithFabNavRoute,
+        ) {
+            BottomAppBarWithFAB(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = exitAlwaysBottomAppBarNavRoute,
+        ) {
+            ExitAlwaysBottomAppBar(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = modalBottomSheetNavRoute,
+        ) {
+            ModalBottomSheetSample(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = simpleBottomSheetScaffoldNavRoute,
+        ) {
+            SimpleBottomSheetScaffoldSample(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = bottomSheetScaffoldNestedScrollNavRoute,
+        ) {
+            BottomSheetScaffoldNestedScrollSample(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+
+
+
+
+
 
         composable(
             route = demoUIScreenNavRoute,

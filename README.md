@@ -34,6 +34,10 @@ A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potenti
 * Material You dynamic color and Light/Dark theme support
 * Integration with Architecture Components, Navigation, ViewModel
 
+- [x] Badge
+- [x] Bottom App Bar
+- [x] Bottom Sheet
+
 ```more features coming soon```
 
 ## Screenshots

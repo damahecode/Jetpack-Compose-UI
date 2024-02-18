@@ -29,7 +29,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,8 +39,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.code.damahe.feature.model.FeatureList
@@ -91,7 +88,7 @@ fun ProfileScreen(onGoBack: () -> Unit) {
     if (modalSheetState.isVisible) {
         ModalBottomSheet(onDismissRequest = {},
             sheetState = modalSheetState,
-            scrimColor = Color.Black.copy(alpha = 0.7f),
+            scrimColor = Color.Black.copy(alpha = 0.5f),
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             containerColor = Color.Transparent,
         ) {
