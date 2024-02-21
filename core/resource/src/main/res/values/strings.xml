@@ -35,6 +35,8 @@
     <string name="changelog_description">What\'s new?</string>
     <string name="txt_open_source_libraries">Open Source Libraries</string>
     <string name="open_source_libraries_description">\"Jetpack Compose UI\" is built using open source software</string>
+    <string name="txt_source_code">Source Code</string>
+    <string name="source_code_description">Get Source Code of \"Jetpack Compose UI\"</string>
 
 
     <!-- Module core:damahecode-feature -->

@@ -1,5 +1,7 @@
 package com.code.damahe.preference.screen
 
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -30,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
@@ -53,6 +56,7 @@ fun PreferenceScreen(
     onGoBack: () -> Unit
 ) {
 
+    val context = LocalContext.current
     val showThemeSettingsDialog = remember { mutableStateOf(false) }
 
     if (showThemeSettingsDialog.value) {
@@ -105,6 +109,18 @@ fun PreferenceScreen(
             }
 
             SettingsGroup(name = R.string.txt_more_options) {
+                SettingsTextComp(
+                    name = R.string.txt_source_code,
+                    icon = DrawableResourceIcon(MyIcons.CodeTag),
+                    desc = R.string.source_code_description,
+                    onClick = {
+                        context.startActivity(
+                            Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/damahecode/Jetpack-Compose-UI")
+                        ))
+                    },
+                )
+
                 SettingsTextComp(
                     name = R.string.txt_about,
                     icon = ImageVectorIcon(MyIcons.Info),

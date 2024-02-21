@@ -10,15 +10,12 @@
 [issues-url]: https://github.com/damahecode/Jetpack-Compose-UI/issues
 [license-shield]: https://img.shields.io/github/license/damahecode/Jetpack-Compose-UI.svg?style=for-the-badge
 [license-url]: https://github.com/damahecode/Jetpack-Compose-UI/blob/master/LICENSE
-[visitor-shield]: https://komarev.com/ghpvc/?username=damahecode&label=Visitors&style=for-the-badge
-[visitor-url]: https://github.com/damahecode/Jetpack-Compose-UI
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![Visitors][visitor-shield]][visitor-url]
 
 # Jetpack Compose UI by Damahe Code
 A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potential
@@ -59,8 +56,5 @@ A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potenti
 |:---:|:---:|:---:|:---:|
 | Preference Screen | Preference Screen Dark | Profile Screen | Template Screen |
 
-## Donation
-If this project help you reduce time to develop, you can give me a cup of coffee :)
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://damahecode.blogspot.com/2023/07/donate-to-damahe-code.html)
 

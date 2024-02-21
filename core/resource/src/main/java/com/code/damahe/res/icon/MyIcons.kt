@@ -53,6 +53,7 @@ object MyIcons {
     val Android_Head = R.drawable.ic_android_head_24dp
     val AppIcon = R.drawable.ic_launcher_background
     val Policy = R.drawable.ic_policy_24dp
+    val CodeTag = R.drawable.ic_code_tag_24dp
 }
 
 /**
