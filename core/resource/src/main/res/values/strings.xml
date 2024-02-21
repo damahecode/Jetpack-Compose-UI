@@ -47,5 +47,19 @@
     <string name="txt_badge">Badge</string>
     <string name="txt_bottom_app_bar">Bottom App Bar</string>
     <string name="txt_bottom_sheet">Bottom Sheet</string>
+    <string name="txt_buttons">Buttons</string>
+    <string name="txt_card">Card</string>
+    <string name="txt_check_boxes">CheckBoxes</string>
+    <string name="txt_chips">Chips</string>
+    <string name="txt_Date_pickers">Date Pickers</string>
+    <string name="txt_floating_action_buttons">Floating Action Buttons</string>
+    <string name="txt_icon_buttons">Icon Buttons</string>
+    <string name="txt_lists">Lists</string>
+    <string name="txt_menus">Menus</string>
+    <string name="txt_navigation_bar">Navigation bar</string>
+    <string name="txt_navigation_rail">Navigation rail</string>
+    <string name="txt_radio_buttons">Radio buttons</string>
+    <string name="txt_segmented__button">Segmented button</string>
+    <string name="txt_switches">Switches</string>
 
 </resources>

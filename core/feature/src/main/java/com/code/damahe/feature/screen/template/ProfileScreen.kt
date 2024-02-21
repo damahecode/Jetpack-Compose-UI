@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.code.damahe.feature.model.FeatureList
@@ -88,9 +89,7 @@ fun ProfileScreen(onGoBack: () -> Unit) {
     if (modalSheetState.isVisible) {
         ModalBottomSheet(onDismissRequest = {},
             sheetState = modalSheetState,
-            scrimColor = Color.Black.copy(alpha = 0.5f),
-            shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-            containerColor = Color.Transparent,
+            windowInsets = WindowInsets(0)
         ) {
             Column {
                 FooterContent()
@@ -427,15 +426,15 @@ fun GitContentItem(
 @Composable
 fun FooterContent() {
     Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(12.dp),
+        modifier = Modifier.fillMaxWidth()
+            .padding(start = 12.dp, end = 12.dp),
         shape = RoundedCornerShape(8),
     ) {
         Column(modifier = Modifier.padding(5.dp)) {
             Text(
-                modifier = Modifier
-                    .padding(10.dp),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(bottom = 10.dp),
+                textAlign = TextAlign.Center,
                 text = stringResource(id = R.string.txt_more_options),
                 style = MaterialTheme.typography.titleMedium,
             )

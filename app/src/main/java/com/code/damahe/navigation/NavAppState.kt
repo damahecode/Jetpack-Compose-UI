@@ -51,23 +51,7 @@ class NavAppState(
             .currentBackStackEntryAsState().value?.destination
 
     fun navigateToDestination(route: String) {
-        trace("Navigation: $route") {
-            val topLevelNavOptions = navOptions {
-                // Pop up to the start destination of the graph to
-                // avoid building up a large stack of destinations
-                // on the back stack as users select items
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
-                // Avoid multiple copies of the same destination when
-                // reSelecting the same item
-                launchSingleTop = true
-                // Restore state when reSelecting a previously selected item
-                restoreState = true
-            }
-
-            navController.navigateToDestination(route, topLevelNavOptions)
-        }
+        navController.navigateToDestination(route)
     }
 
     val currentMainBottomNavDestination: MainBottomNavDest?

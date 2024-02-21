@@ -3,6 +3,7 @@ package com.code.damahe.feature.screen
 import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -91,6 +93,72 @@ fun HomeScreen(
                 ),
             ),
         ),
+        MaterialDemo(
+            context.getString(R.string.txt_buttons),
+            MainActivityNavigation.buttonSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_card),
+            MainActivityNavigation.cardSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_check_boxes),
+            MainActivityNavigation.checkBoxes
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_chips),
+            MainActivityNavigation.chipSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_Date_pickers),
+            MainActivityNavigation.datePickerSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_floating_action_buttons),
+            MainActivityNavigation.floatingActionButtonSamples,
+            listOf(
+                MaterialList(
+                    "Simple FAB Sample",
+                    MainActivityNavigation.floatingActionButtonSamples
+                ),
+                MaterialList(
+                    "Animated FAB Sample",
+                    MainActivityNavigation.animatedExtendedFloatingActionButtonSample
+                ),
+            ),
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_icon_buttons),
+            MainActivityNavigation.iconButtonSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_lists),
+            MainActivityNavigation.listSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_menus),
+            MainActivityNavigation.menuSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_navigation_bar),
+            MainActivityNavigation.navigationBarSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_navigation_rail),
+            MainActivityNavigation.navigationRailSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_radio_buttons),
+            MainActivityNavigation.radioButtonSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_segmented__button),
+            MainActivityNavigation.segmentedButtonSamples
+        ),
+        MaterialDemo(
+            context.getString(R.string.txt_switches),
+            MainActivityNavigation.switchSamples
+        ),
     )
 
     val clickRemember = remember { mutableStateOf("") }
@@ -135,11 +203,21 @@ fun HomeScreen(
                         },
                     shape = RoundedCornerShape(8.dp),
                 ) {
-                    Text(
+                    Row(
                         modifier = Modifier.padding(10.dp),
-                        style = MaterialTheme.typography.titleLarge,
-                        text = it.name
-                    )
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            style = MaterialTheme.typography.titleLarge,
+                            text = it.name
+                        )
+                        Icon(
+                            imageVector = MyIcons.KeyboardArrowRight,
+                            contentDescription = null,
+                            modifier = Modifier.padding(4.dp)
+                        )
+                    }
                 }
                 if (clickRemember.value == it.name) {
                     it.list.forEach { list ->

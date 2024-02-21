@@ -10,28 +10,58 @@ import com.code.damahe.activity.PreferenceActivity
 import com.code.damahe.feature.screen.DemoUIScreen
 import com.code.damahe.feature.screen.HomeScreen
 import com.code.damahe.feature.screen.TemplateScreen
+import com.code.damahe.feature.screen.home.AnimatedExtendedFloatingActionButtonSample
 import com.code.damahe.feature.screen.home.BadgeScreen
 import com.code.damahe.feature.screen.home.BottomAppBarWithFAB
 import com.code.damahe.feature.screen.home.BottomSheetScaffoldNestedScrollSample
+import com.code.damahe.feature.screen.home.ButtonSamples
+import com.code.damahe.feature.screen.home.CardSamples
+import com.code.damahe.feature.screen.home.CheckboxSamples
+import com.code.damahe.feature.screen.home.ChipSamples
+import com.code.damahe.feature.screen.home.DatePickerSamples
 import com.code.damahe.feature.screen.home.ExitAlwaysBottomAppBar
+import com.code.damahe.feature.screen.home.FloatingActionButtonSamples
+import com.code.damahe.feature.screen.home.IconButtonSamples
+import com.code.damahe.feature.screen.home.ListSamples
+import com.code.damahe.feature.screen.home.MenuSamples
 import com.code.damahe.feature.screen.home.ModalBottomSheetSample
+import com.code.damahe.feature.screen.home.NavigationBarSamples
+import com.code.damahe.feature.screen.home.NavigationRailSamples
+import com.code.damahe.feature.screen.home.RadioButtonSamples
+import com.code.damahe.feature.screen.home.SegmentedButtonSamples
 import com.code.damahe.feature.screen.home.SimpleBottomAppBar
 import com.code.damahe.feature.screen.home.SimpleBottomSheetScaffoldSample
+import com.code.damahe.feature.screen.home.SwitchSamples
 import com.code.damahe.feature.screen.template.LoginSignupScreen
 import com.code.damahe.feature.screen.template.ProfileScreen
 import com.code.damahe.navigation.NavAppState
 import com.code.damahe.res.config.AppActivity
+import com.code.damahe.res.config.MainActivityNavigation.animatedExtendedFloatingActionButtonSample
 import com.code.damahe.res.config.MainActivityNavigation.homeScreenNavRoute
 import com.code.damahe.res.config.MainActivityNavigation.demoUIScreenNavRoute
 import com.code.damahe.res.config.MainActivityNavigation.badgeScreenNavRoute
 import com.code.damahe.res.config.MainActivityNavigation.bottomAppBarWithFabNavRoute
 import com.code.damahe.res.config.MainActivityNavigation.bottomSheetScaffoldNestedScrollNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.buttonSamples
+import com.code.damahe.res.config.MainActivityNavigation.cardSamples
+import com.code.damahe.res.config.MainActivityNavigation.checkBoxes
+import com.code.damahe.res.config.MainActivityNavigation.chipSamples
+import com.code.damahe.res.config.MainActivityNavigation.datePickerSamples
 import com.code.damahe.res.config.MainActivityNavigation.exitAlwaysBottomAppBarNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.floatingActionButtonSamples
+import com.code.damahe.res.config.MainActivityNavigation.iconButtonSamples
+import com.code.damahe.res.config.MainActivityNavigation.listSamples
 import com.code.damahe.res.config.MainActivityNavigation.loginSignupScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.menuSamples
 import com.code.damahe.res.config.MainActivityNavigation.modalBottomSheetNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.navigationBarSamples
+import com.code.damahe.res.config.MainActivityNavigation.navigationRailSamples
 import com.code.damahe.res.config.MainActivityNavigation.profileScreenNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.radioButtonSamples
+import com.code.damahe.res.config.MainActivityNavigation.segmentedButtonSamples
 import com.code.damahe.res.config.MainActivityNavigation.simpleBottomAppBarNavRoute
 import com.code.damahe.res.config.MainActivityNavigation.simpleBottomSheetScaffoldNavRoute
+import com.code.damahe.res.config.MainActivityNavigation.switchSamples
 import com.code.damahe.res.config.MainActivityNavigation.templateScreenNavRoute
 
 @Composable
@@ -114,6 +144,114 @@ fun NavMainHost(
                 onGoBack = { navController.popBackStack() },
             )
         }
+        composable(
+            route = buttonSamples,
+        ) {
+            ButtonSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = cardSamples,
+        ) {
+            CardSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = checkBoxes,
+        ) {
+            CheckboxSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = chipSamples,
+        ) {
+            ChipSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = datePickerSamples,
+        ) {
+            DatePickerSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = floatingActionButtonSamples,
+        ) {
+            FloatingActionButtonSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = animatedExtendedFloatingActionButtonSample,
+        ) {
+            AnimatedExtendedFloatingActionButtonSample(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = iconButtonSamples,
+        ) {
+            IconButtonSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = listSamples,
+        ) {
+            ListSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = menuSamples,
+        ) {
+            MenuSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = navigationBarSamples,
+        ) {
+            NavigationBarSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = navigationRailSamples,
+        ) {
+            NavigationRailSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = radioButtonSamples,
+        ) {
+            RadioButtonSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = segmentedButtonSamples,
+        ) {
+            SegmentedButtonSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+        composable(
+            route = switchSamples,
+        ) {
+            SwitchSamples(
+                onGoBack = { navController.popBackStack() },
+            )
+        }
+
+
+
 
 
 

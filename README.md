@@ -37,6 +37,20 @@ A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potenti
 - [x] Badge
 - [x] Bottom App Bar
 - [x] Bottom Sheet
+- [x] Buttons
+- [x] Card
+- [x] Checkboxes
+- [x] Chips
+- [x] Date Pickers
+- [x] Floating Action Buttons
+- [x] Icon Buttons
+- [x] Lists
+- [x] Menus
+- [x] Navigation bar
+- [x] Navigation rail
+- [x] Radio buttons
+- [x] Segmented button
+- [x] Switches
 
 ```more features coming soon```
 
