@@ -14,10 +14,13 @@ dependencyResolutionManagement {
         maven ("https://jitpack.io")
     }
 }
-rootProject.name = "Jetpack Compose UI"
+rootProject.name = "Jetpack-Compose-UI"
 include ("app")
 include(":core:resource")
-include(":core:preference")
-include(":core:feature")
-
 include(":material-theme")
+include(":core:system")
+include(":core:ui")
+
+include(":compose:template:responsive-screen")
+include(":compose:featured")
+include(":compose:demo-ui")

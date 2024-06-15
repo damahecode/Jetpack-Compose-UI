@@ -1,67 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2024 damahecode.
+  ~
+  ~ This program is free software; you can redistribute it and/or
+  ~ modify it under the terms of the GNU General Public License
+  ~ as published by the Free Software Foundation; either version 2
+  ~ of the License, or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program; if not, write to the Free Software
+  ~ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  -->
+
 <resources>
     <!-- Module app -->
     <string name="app_name">Jetpack Compose UI</string>
-    <string name="not_connected">⚠️ You aren’t connected to the internet</string>
-    <string name="txt_home">Home</string>
-    <string name="txt_demo_ui">Demo UI</string>
-    <string name="txt_template">Template</string>
-
-
-    <!-- Module material-theme -->
-    <string name="ok">OK</string>
-    <string name="title_app_theme">App Theme</string>
-    <string name="loading">Loading…</string>
-    <string name="txt_theme">Theme</string>
-    <string name="brand_default">Default</string>
-    <string name="brand_dynamic">Dynamic</string>
-    <string name="gradient_colors_preference">Use gradient colors</string>
-    <string name="gradient_colors_yes">Yes</string>
-    <string name="gradient_colors_no">No</string>
-    <string name="dark_mode_preference">Dark mode preference</string>
-    <string name="dark_mode_config_system_default">System default</string>
-    <string name="dark_mode_config_light">Light</string>
-    <string name="dark_mode_config_dark">Dark</string>
-
-
-    <!-- Module damahecode-preference -->
     <string name="txt_preferences">Preferences</string>
-    <string name="txt_general">General</string>
-    <string name="txt_more_options">More Options</string>
-    <string name="txt_theme_description">Try another look</string>
-    <string name="txt_about">About</string>
-    <string name="about_description">Developer info &amp; more</string>
-    <string name="txt_changelog">Changelog</string>
-    <string name="changelog_description">What\'s new?</string>
-    <string name="txt_open_source_libraries">Open Source Libraries</string>
-    <string name="open_source_libraries_description">\"Jetpack Compose UI\" is built using open source software</string>
-    <string name="txt_source_code">Source Code</string>
-    <string name="source_code_description">Get Source Code of \"Jetpack Compose UI\"</string>
-
-
-    <!-- Module core:damahecode-feature -->
-    <string name="txt_profile">Profile</string>
-    <string name="txt_material_theme">Material Theme</string>
     <string name="txt_github">Github</string>
-    <string name="txt_login_signup">Login/Signup</string>
-    <string name="txt_description">Description</string>
-    <string name="txt_example">Examples</string>
-    <string name="txt_badge">Badge</string>
-    <string name="txt_bottom_app_bar">Bottom App Bar</string>
-    <string name="txt_bottom_sheet">Bottom Sheet</string>
-    <string name="txt_buttons">Buttons</string>
-    <string name="txt_card">Card</string>
-    <string name="txt_check_boxes">CheckBoxes</string>
-    <string name="txt_chips">Chips</string>
-    <string name="txt_Date_pickers">Date Pickers</string>
-    <string name="txt_floating_action_buttons">Floating Action Buttons</string>
-    <string name="txt_icon_buttons">Icon Buttons</string>
-    <string name="txt_lists">Lists</string>
-    <string name="txt_menus">Menus</string>
-    <string name="txt_navigation_bar">Navigation bar</string>
-    <string name="txt_navigation_rail">Navigation rail</string>
-    <string name="txt_radio_buttons">Radio buttons</string>
-    <string name="txt_segmented__button">Segmented button</string>
-    <string name="txt_switches">Switches</string>
+    <string name="coming_soon">Coming soon…</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="home">Home</string>
+    <string name="demo_ui">DemoUI</string>
+    <string name="template">Template</string>
+    <string name="profile">Profile</string>
+    <string name="login_signup">Login/Signup</string>
+    <string name="more_options">More Options</string>
+    <string name="responsive_screen">Responsive Screen</string>
+
+
+    <!-- Module :compose:featured -->
+    <string name="bottom_app_bar">Bottom App Bar</string>
+    <string name="bottom_sheet">Bottom Sheet</string>
+    <string name="search_bars">Search Bars</string>
+    <string name="badge">Badge</string>
+    <string name="description">Description</string>
+    <string name="example">Examples</string>
+    <string name="buttons">Buttons</string>
+    <string name="card">Card</string>
+    <string name="check_boxes">CheckBoxes</string>
+    <string name="chips">Chips</string>
+    <string name="date_pickers">Date Pickers</string>
+    <string name="floating_action_buttons">Floating Action Buttons</string>
+    <string name="icon_buttons">Icon Buttons</string>
+    <string name="lists">Lists</string>
+    <string name="menus">Menus</string>
+    <string name="navigation_bar">Navigation bar</string>
+    <string name="navigation_rail">Navigation rail</string>
+    <string name="radio_buttons">Radio buttons</string>
+    <string name="segmented__button">Segmented button</string>
+    <string name="switches">Switches</string>
+    <string name="tabs">Tabs</string>
+    <string name="text_fields">Text fields</string>
+
+
+    <!-- Module :compose:template:responsive-screen -->
+    <string name="edit">Edit</string>
+    <string name="compose">Compose</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="featured">Featured</string>
+    <string name="you">You</string>
+
+
+
 
 </resources>

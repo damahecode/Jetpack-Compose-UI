@@ -20,11 +20,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.code.damahe.activity.PreferenceActivity"
-            android:theme="@style/Theme.DCode.Material"
-            android:exported="true">
-        </activity>
     </application>
 
 </manifest>

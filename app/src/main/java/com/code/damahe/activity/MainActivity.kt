@@ -1,20 +1,43 @@
+/*
+ * Copyright (c) 2024 damahecode.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 package com.code.damahe.activity
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import com.code.damahe.app.Activity
-import com.code.damahe.app.MainContent
+import com.code.damahe.material.app.DCodeActivity
+import com.code.damahe.material.app.MainContent
+import com.code.damahe.material.theme.DCodeAppTheme
 import com.code.damahe.material.viewmodel.ThemeUiState.Loading
 import com.code.damahe.material.viewmodel.ThemeUiState.Success
-import com.code.damahe.screen.NavMainScreen
+import com.code.damahe.ui.screen.MainScreen
+import com.google.accompanist.adaptive.calculateDisplayFeatures
 
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-class MainActivity : Activity() {
+class MainActivity : DCodeActivity() {
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -26,7 +49,6 @@ class MainActivity : Activity() {
             when (themeUiState) {
                 Loading -> true
                 is Success -> false
-                else -> false
             }
         }
 
@@ -36,8 +58,12 @@ class MainActivity : Activity() {
 
         setContent {
             MainContent(themeUiState = themeUiState) {
-                NavMainScreen(
-                    windowSizeClass = calculateWindowSizeClass(this)
+                val windowSize = calculateWindowSizeClass(this)
+                val displayFeatures = calculateDisplayFeatures(this)
+
+                MainScreen(
+                    windowSize = windowSize,
+                    displayFeatures = displayFeatures
                 )
             }
         }
@@ -45,3 +71,14 @@ class MainActivity : Activity() {
 }
 
 
+@Preview(
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    showBackground = true,
+)
+@Composable
+fun PreviewScreen() {
+  DCodeAppTheme {
+      //MainScreen()
+  }
+}
