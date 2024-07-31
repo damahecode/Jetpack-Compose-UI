@@ -5,5 +5,5 @@ import com.code.damahe.res.icon.DCodeIcon
 data class FeaturedList(
     val name: String,
     val listIcon: DCodeIcon,
-    val githubUrl: String,
+    val route: String,
 )
