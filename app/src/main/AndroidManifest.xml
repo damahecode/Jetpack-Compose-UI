@@ -20,6 +20,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.code.damahe.activity.PreviewActivity"
+            android:theme="@style/Theme.DCode.Material"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
