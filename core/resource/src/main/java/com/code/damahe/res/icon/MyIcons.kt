@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.rounded.List
+import androidx.compose.material.icons.automirrored.rounded.Send
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -66,7 +67,7 @@ object MyIcons {
     val List = Icons.AutoMirrored.Rounded.List
     val ArrowBack = Icons.AutoMirrored.Rounded.ArrowBack
     val KeyboardArrowRight = Icons.AutoMirrored.Rounded.KeyboardArrowRight
-
+    val Send = Icons.AutoMirrored.Rounded.Send
     val Info = Icons.Rounded.Info
     val Location = Icons.Rounded.LocationOn
     val Search = Icons.Filled.Search

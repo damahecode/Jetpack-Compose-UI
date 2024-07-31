@@ -29,6 +29,11 @@
     <string name="template">Template</string>
     <string name="profile">Profile</string>
     <string name="login_signup">Login/Signup</string>
+    <string name="chatScreen">Chat Screen</string>
+    <string name="on_boarding">On-Boarding</string>
+    <string name="empty_screen">Empty Screen</string>
+    <string name="settings">Settings</string>
+    <string name="pin_loc_biometric">Pin Lock/Biometric</string>
     <string name="more_options">More Options</string>
     <string name="responsive_screen">Responsive Screen</string>
 
