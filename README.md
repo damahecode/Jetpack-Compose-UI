@@ -52,11 +52,23 @@ A Collection on all Jetpack compose UI Layouts, Demo screens to see it's potenti
 ```more features coming soon```
 
 ## Screenshots
-<!--
-| <img src="assets/screenshots/preference-screen.png" width="200"/> | <img src="assets/screenshots/preference-screen-dark.png" width="200"/> | <img src="assets/screenshots/profile-screen.png" width="200"/> | <img src="assets/screenshots/template-screen.png" width="200"/> |
-|:---:|:---:|:---:|:---:|
-| Preference Screen | Preference Screen Dark | Profile Screen | Template Screen |
--->
+
+| <img src="assets/screenshots/responsive-screen.jpg" width="300"/> |
+|:-----------------------------------------------------------------:|
+|                         Responsive Screen                         |
+
+| <img src="assets/screenshots/featured.jpg" width="200"/> | <img src="assets/screenshots/demo-ui.jpg" width="200"/> |
+|:--------------------------------------------------------:|:-------------------------------------------------------:|
+|                         Featured                         |                         Demo UI                         |
+
+| <img src="assets/screenshots/chat.jpg" width="200"/> | <img src="assets/screenshots/profile.jpg" width="200"/> |
+|:----------------------------------------------------:|:-------------------------------------------------------:|
+|                     Chat Screen                      |                     Profile Screen                      |
+
+| <img src="assets/screenshots/login.jpg" width="200"/> | <img src="assets/screenshots/on-boarding.jpg" width="200"/> |
+|:-----------------------------------------------------:|:-----------------------------------------------------------:|
+|                     Login Screen                      |                     On-Boarding Screen                      |
+
 
 
 
