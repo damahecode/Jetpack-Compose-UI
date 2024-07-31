@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -31,7 +30,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -52,8 +50,6 @@ import androidx.compose.ui.unit.dp
 import com.code.damahe.demo.ui.model.FeaturedList
 import com.code.damahe.demo.ui.model.ImageTextList
 import com.code.damahe.demo.ui.model.ProfilePopularList
-import com.code.damahe.demo.ui.utils.manageModalBottomSheet
-import com.code.damahe.demo.ui.utils.modalBottomSheetState
 import com.code.damahe.res.R
 import com.code.damahe.res.icon.DCodeIcon.ImageVectorIcon
 import com.code.damahe.res.icon.DCodeIcon.DrawableResourceIcon
@@ -63,15 +59,17 @@ const val displayName = "Damahe Code"
 const val username = "damahecode"
 const val my_description = "Passionate developer creating innovative solutions with a love for technology. Solving problems, learning and building applications that drive positive change"
 val profilePopularList = listOf(
-    ProfilePopularList("Jetpack-Compose-UI", "A Collection on all Jetpack compose UI Layouts and Demo screens to see it's potential", "25", "Kotlin"),
-    ProfilePopularList("Leaf-Explorer", "File Manager, File Sharing & Music Player App for Android", "100", "Kotlin"),
-    ProfilePopularList("Material-Theme", "A Material Design-based Theme Management System for Android Jetpack Compose.", "150", "Kotlin"),
-    ProfilePopularList("Weather", "A demo implementation of Weather API in Android App.", "15", "Kotlin")
+    ProfilePopularList("Leaf-Explorer", "File Manager, File Sharing & Music Player App for Android", "13", "Kotlin"),
+    ProfilePopularList("Material-Theme", "A Material Design-based Theme Management System for Android Jetpack Compose.", "2", "Kotlin"),
+    ProfilePopularList("Leaf-Music-Player", "Music player for Android\n", "1", "Kotlin"),
+    ProfilePopularList("Chat-App", "A Chat App for Android using Firebase\n", "1", "Kotlin"),
+    ProfilePopularList("Jetpack-Compose-UI", "A Collection on all Jetpack compose UI Layouts and Demo screens to see it's potential", "1", "Kotlin"),
+    ProfilePopularList("Weather", "A demo implementation of Weather API in Android App.", "1", "Kotlin")
 )
 val imageTextList = listOf(
     ImageTextList(ImageVectorIcon(MyIcons.Location), "Bharat/India"),
+    ImageTextList(ImageVectorIcon(MyIcons.Account), "100 followers"),
     ImageTextList(ImageVectorIcon(MyIcons.Email), "damahecode@gmail.com"),
-    ImageTextList(ImageVectorIcon(MyIcons.Account), "100 followers")
 )
 val moreOptionsList = listOf(
     FeaturedList("Edit Profile", ImageVectorIcon(MyIcons.Edit), ""),
@@ -87,21 +85,6 @@ val moreOptionsList = listOf(
 )
 @Composable
 fun ProfileScreen(onGoBack: () -> Unit) {
-
-    val modalSheetState = modalBottomSheetState()
-
-    val openMoreDetailsBottomSheet = manageModalBottomSheet(sheetState = modalSheetState)
-
-    if (modalSheetState.isVisible) {
-        ModalBottomSheet(onDismissRequest = {},
-            sheetState = modalSheetState,
-            windowInsets = WindowInsets(0)
-        ) {
-            Column(modifier = Modifier.systemBarsPadding()) {
-                FooterContent()
-            }
-        }
-    }
 
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
@@ -125,9 +108,7 @@ fun ProfileScreen(onGoBack: () -> Unit) {
                     IconButton(onClick = {}) {
                         Icon(MyIcons.Search, contentDescription = "Search")
                     }
-                    IconButton(onClick = {
-                        openMoreDetailsBottomSheet()
-                    }) {
+                    IconButton(onClick = {}) {
                         Icon(MyIcons.MoreVert, contentDescription = "More")
                     }
                 },
@@ -152,9 +133,9 @@ fun ProfileScreen(onGoBack: () -> Unit) {
             Column(
                 modifier = Modifier.fillMaxWidth()
                     .padding(5.dp)
+                    .systemBarsPadding()
                     .verticalScroll(rememberScrollState())
             ) {
-
                 TopProfileLayout()
                 MainProfileContent()
                 FooterContent()
@@ -266,13 +247,12 @@ fun MainProfileContent() {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(12.dp),
-        shape = RoundedCornerShape(8),
+            .padding(top = 12.dp, bottom = 12.dp),
     ) {
         Column(modifier = Modifier.padding(5.dp)) {
             Text(
                 modifier = Modifier
-                    .padding(10.dp),
+                    .padding(start = 12.dp, bottom = 5.dp),
                 text = "Popular",
                 style = MaterialTheme.typography.titleMedium,
             )
@@ -300,7 +280,7 @@ fun MainProfileContent() {
                 endItem = {
                     Text(
                         modifier = Modifier.padding(5.dp),
-                        text = "24"
+                        text = "10"
                     )
                 }
             )
@@ -324,7 +304,7 @@ fun MainProfileContent() {
                 endItem = {
                     Text(
                         modifier = Modifier.padding(5.dp),
-                        text = "60"
+                        text = "20"
                     )
                 }
             )

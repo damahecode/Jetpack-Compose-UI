@@ -18,6 +18,7 @@
 
 package com.code.damahe.activity
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -64,7 +65,11 @@ class MainActivity : DCodeActivity() {
                 MainScreen(
                     windowSize = windowSize,
                     displayFeatures = displayFeatures
-                )
+                ) { route ->
+                    val intent = Intent(this, PreviewActivity::class.java)
+                    intent.putExtra("route", route)
+                    startActivity(intent)
+                }
             }
         }
     }

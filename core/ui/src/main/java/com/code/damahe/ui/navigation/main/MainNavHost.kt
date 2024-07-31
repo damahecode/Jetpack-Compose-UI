@@ -5,8 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.code.damahe.demo.ui.screen.LoginSignupScreen
-import com.code.damahe.demo.ui.screen.ProfileScreen
 import com.code.damahe.featured.compose.AnimatedExtendedFloatingActionButtonSample
 import com.code.damahe.featured.compose.BadgeScreen
 import com.code.damahe.featured.compose.BottomAppBarWithFAB
@@ -53,12 +51,10 @@ import com.code.damahe.res.navigation.MainActivityNavigation.exitAlwaysBottomApp
 import com.code.damahe.res.navigation.MainActivityNavigation.floatingActionButtonSamples
 import com.code.damahe.res.navigation.MainActivityNavigation.iconButtonSamples
 import com.code.damahe.res.navigation.MainActivityNavigation.listSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.loginSignupScreenNavRoute
 import com.code.damahe.res.navigation.MainActivityNavigation.menuSamples
 import com.code.damahe.res.navigation.MainActivityNavigation.modalBottomSheetNavRoute
 import com.code.damahe.res.navigation.MainActivityNavigation.navigationBarSamples
 import com.code.damahe.res.navigation.MainActivityNavigation.navigationRailSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.profileScreenNavRoute
 import com.code.damahe.res.navigation.MainActivityNavigation.radioButtonSamples
 import com.code.damahe.res.navigation.MainActivityNavigation.searchBarSample
 import com.code.damahe.res.navigation.MainActivityNavigation.segmentedButtonSamples
@@ -108,7 +104,8 @@ val MAIN_TOP_LEVEL_DESTINATIONS = listOf(
 fun MainNavHost(
     navAppState: MainNavAppState,
     modifier: Modifier = Modifier,
-    onDrawerClicked: () -> Unit = {}
+    onDrawerClicked: () -> Unit = {},
+    onPreviewClicked: (route: String) -> Unit = {}
 ) {
     val navController = navAppState.navController
 
@@ -134,11 +131,8 @@ fun MainNavHost(
         }
         composable(MainRoute.DEMO_UI) {
             DemoUIScreen(
-                onClick = { featureList, context ->
-                    when (featureList.name) {
-                        context.getString(R.string.profile) -> navAppState.navigateToDestination(profileScreenNavRoute)
-                        context.getString(R.string.login_signup) -> navAppState.navigateToDestination(loginSignupScreenNavRoute)
-                    }
+                onClick = { featureList, _ ->
+                    onPreviewClicked(featureList.route)
                 }
             )
         }
@@ -333,22 +327,6 @@ fun MainNavHost(
         ) {
             DockedSearchBarSample(
                 onGoBack = { navController.popBackStack() },
-            )
-        }
-
-        composable(
-            route = profileScreenNavRoute,
-        ) {
-            ProfileScreen(
-                onGoBack = { navController.popBackStack() }
-            )
-        }
-
-        composable(
-            route = loginSignupScreenNavRoute,
-        ) {
-            LoginSignupScreen(
-                onGoBack = { navController.popBackStack() }
             )
         }
     }

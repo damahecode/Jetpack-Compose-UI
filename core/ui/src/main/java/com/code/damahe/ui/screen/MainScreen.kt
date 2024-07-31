@@ -55,6 +55,7 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     windowSize: WindowSizeClass,
     displayFeatures: List<DisplayFeature>,
+    onPreviewClicked: (route: String) -> Unit = {}
 ) {
 //                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     /**
@@ -134,14 +135,16 @@ fun MainScreen(
             displayFeatures = displayFeatures,
             navigationType = navigationType,
             contentType = contentType,
-            navigationContentPosition =  navigationContentPosition
-        )
+            navigationContentPosition =  navigationContentPosition,
+        ),
+        onPreviewClicked = onPreviewClicked
     )
 }
 
 @Composable
 private fun DCodeNavigationWrapper(
     navAppState: MainNavAppState,
+    onPreviewClicked: (route: String) -> Unit = {}
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -188,7 +191,8 @@ private fun DCodeNavigationWrapper(
         }) {
             MainAppContent(
                 navAppState = navAppState,
-                selectedDestination = navAppState.selectedDestination(navBackStackEntry)
+                selectedDestination = navAppState.selectedDestination(navBackStackEntry),
+                onPreviewClicked = onPreviewClicked
             )
         }
     } else {
@@ -245,10 +249,12 @@ private fun DCodeNavigationWrapper(
         ) {
             MainAppContent(
                 navAppState = navAppState,
-                selectedDestination = navAppState.selectedDestination(navBackStackEntry)
-            ) {
-                onDrawerClicked()
-            }
+                selectedDestination = navAppState.selectedDestination(navBackStackEntry),
+                onDrawerClicked = {
+                    onDrawerClicked()
+                },
+                onPreviewClicked = onPreviewClicked
+            )
         }
     }
 }
@@ -258,7 +264,8 @@ fun MainAppContent(
     modifier: Modifier = Modifier,
     navAppState: MainNavAppState,
     selectedDestination: String,
-    onDrawerClicked: () -> Unit = {}
+    onDrawerClicked: () -> Unit = {},
+    onPreviewClicked: (route: String) -> Unit = {}
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         val typeRail = navAppState.navigationType == DCodeNavigationType.NAVIGATION_RAIL
@@ -279,7 +286,8 @@ fun MainAppContent(
             MainNavHost(
                 navAppState = navAppState,
                 modifier = Modifier.weight(1f),
-                onDrawerClicked = onDrawerClicked
+                onDrawerClicked = onDrawerClicked,
+                onPreviewClicked = onPreviewClicked
             )
             AnimatedVisibility(visible = navAppState.navigationType == DCodeNavigationType.BOTTOM_NAVIGATION) {
                 DCodeBottomNavigationBar(
