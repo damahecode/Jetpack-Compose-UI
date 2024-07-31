@@ -37,4 +37,10 @@ object MainActivityNavigation {
     // DemoUI
     const val profileScreenNavRoute = "profileScreenNavRoute"
     const val loginSignupScreenNavRoute = "loginSignupScreenNavRoute"
+    const val chatScreenNavRoute = "chatScreenNavRoute"
+    const val onBoardingScreenNavRoute = "onBoardingScreenNavRoute"
+    const val emptyScreenNavRoute = "emptyScreenNavRoute"
+    const val settingsScreenNavRoute = "settingsScreenNavRoute"
+    const val locBiometricScreenNavRoute = "locBiometricScreenNavRoute"
+
 }
