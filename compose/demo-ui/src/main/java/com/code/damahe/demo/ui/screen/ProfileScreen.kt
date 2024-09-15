@@ -72,12 +72,12 @@ val imageTextList = listOf(
     ImageTextList(ImageVectorIcon(MyIcons.Email), "damahecode@gmail.com"),
 )
 val moreOptionsList = listOf(
-    FeaturedList("Edit Profile", ImageVectorIcon(MyIcons.Edit), ""),
-    FeaturedList("Manage Account", ImageVectorIcon(MyIcons.Account), ""),
-    FeaturedList("Privacy Policy", DrawableResourceIcon(MyIcons.Policy), ""),
-    FeaturedList("About", ImageVectorIcon(MyIcons.Info), ""),
-    FeaturedList("Help & Feedback", DrawableResourceIcon(MyIcons.Android_Head), ""),
-    FeaturedList("Share '$displayName'", ImageVectorIcon(MyIcons.Share), ""),
+    FeaturedList("Edit Profile", ImageVectorIcon(MyIcons.Edit), "", ""),
+    FeaturedList("Manage Account", ImageVectorIcon(MyIcons.Account), "", ""),
+    FeaturedList("Privacy Policy", DrawableResourceIcon(MyIcons.Policy), "", ""),
+    FeaturedList("About", ImageVectorIcon(MyIcons.Info), "", ""),
+    FeaturedList("Help & Feedback", DrawableResourceIcon(MyIcons.Android_Head), "", ""),
+    FeaturedList("Share '$displayName'", ImageVectorIcon(MyIcons.Share), "", ""),
 )
 
 @OptIn(
