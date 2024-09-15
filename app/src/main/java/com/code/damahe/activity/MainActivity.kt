@@ -20,6 +20,7 @@ package com.code.damahe.activity
 
 import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -33,6 +34,8 @@ import com.code.damahe.material.app.MainContent
 import com.code.damahe.material.theme.DCodeAppTheme
 import com.code.damahe.material.viewmodel.ThemeUiState.Loading
 import com.code.damahe.material.viewmodel.ThemeUiState.Success
+import com.code.damahe.res.navigation.AppActivity.URL_ACTIVITY
+import com.code.damahe.res.navigation.AppActivity.PREVIEW_ACTIVITY
 import com.code.damahe.ui.screen.MainScreen
 import com.google.accompanist.adaptive.calculateDisplayFeatures
 
@@ -65,10 +68,18 @@ class MainActivity : DCodeActivity() {
                 MainScreen(
                     windowSize = windowSize,
                     displayFeatures = displayFeatures
-                ) { route ->
-                    val intent = Intent(this, PreviewActivity::class.java)
-                    intent.putExtra("route", route)
-                    startActivity(intent)
+                ) { activity, route ->
+                    when (activity) {
+                        PREVIEW_ACTIVITY -> {
+                            val intent = Intent(this, PreviewActivity::class.java)
+                            intent.putExtra("route", route)
+                            startActivity(intent)
+                        }
+                        URL_ACTIVITY -> {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(route))
+                            startActivity(intent)
+                        }
+                    }
                 }
             }
         }
