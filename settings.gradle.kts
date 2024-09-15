@@ -21,6 +21,6 @@ include(":material-theme")
 include(":core:system")
 include(":core:ui")
 
-include(":compose:template:responsive-screen")
 include(":compose:featured")
 include(":compose:demo-ui")
+include(":compose:template:responsive-screen")
