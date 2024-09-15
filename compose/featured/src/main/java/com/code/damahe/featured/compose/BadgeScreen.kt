@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -31,7 +30,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.unit.dp
 import com.code.damahe.res.R
 import com.code.damahe.res.icon.MyIcons
@@ -42,12 +40,9 @@ fun BadgeScreen(
     onGoBack: () -> Unit
 ) {
     Scaffold(
-        modifier = Modifier.semantics {
-            testTagsAsResourceId = true
-        },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.badge)) },
@@ -59,6 +54,7 @@ fun BadgeScreen(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
         bottomBar = {
@@ -103,6 +99,7 @@ fun NavigationBarItemWithBadge() {
     NavigationBar(
         contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
         tonalElevation = 0.dp,
+        windowInsets = WindowInsets(0)
         ) {
         NavigationBarItem(
             icon = {

@@ -408,7 +408,7 @@ fun SimpleBottomAppBar(onGoBack: () -> Unit) {
         },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = "SimpleBottomAppBar") },
@@ -420,6 +420,7 @@ fun SimpleBottomAppBar(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
         bottomBar = {
@@ -430,7 +431,8 @@ fun SimpleBottomAppBar(onGoBack: () -> Unit) {
                     IconButton(onClick = { /* doSomething() */ }) {
                         Icon(Icons.Filled.Menu, contentDescription = "Localized description")
                     }
-                }
+                },
+                windowInsets = WindowInsets(0)
             )
         }
     ) { padding ->
@@ -458,7 +460,7 @@ fun BottomAppBarWithFAB(onGoBack: () -> Unit) {
         },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = "BottomAppBarWithFab") },
@@ -470,6 +472,7 @@ fun BottomAppBarWithFAB(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
         bottomBar = {
@@ -495,7 +498,8 @@ fun BottomAppBarWithFAB(onGoBack: () -> Unit) {
                     ) {
                         Icon(Icons.Filled.Add, "Localized description")
                     }
-                }
+                },
+                windowInsets = WindowInsets(0)
             )
         }
     ) { padding ->
@@ -526,7 +530,7 @@ fun ExitAlwaysBottomAppBar(onGoBack: () -> Unit) {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = "BottomAppBarWithFab") },
@@ -538,6 +542,7 @@ fun ExitAlwaysBottomAppBar(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
         bottomBar = {
@@ -552,7 +557,8 @@ fun ExitAlwaysBottomAppBar(onGoBack: () -> Unit) {
                         Icon(Icons.Filled.Edit, contentDescription = "Localized description")
                     }
                 },
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
+                windowInsets = WindowInsets(0)
             )
         },
         floatingActionButton = {

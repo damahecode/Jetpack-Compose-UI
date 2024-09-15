@@ -49,12 +49,9 @@ fun CardSamples(onGoBack: () -> Unit) {
     )
 
     Scaffold(
-        modifier = Modifier.semantics {
-            testTagsAsResourceId = true
-        },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.card)) },
@@ -66,6 +63,7 @@ fun CardSamples(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
     ) { padding ->

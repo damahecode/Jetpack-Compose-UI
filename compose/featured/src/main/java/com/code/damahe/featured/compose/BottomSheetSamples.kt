@@ -67,12 +67,9 @@ fun ModalBottomSheetSample(onGoBack: () -> Unit) {
     )
 
     Scaffold(
-        modifier = Modifier.semantics {
-            testTagsAsResourceId = true
-        },
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = "ModalBottomSheetSample") },
@@ -84,6 +81,7 @@ fun ModalBottomSheetSample(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
     ) { padding ->

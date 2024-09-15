@@ -46,7 +46,7 @@ fun NavigationBarSamples(onGoBack: () -> Unit) {
     Scaffold(
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.navigation_bar)) },
@@ -58,6 +58,7 @@ fun NavigationBarSamples(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
     ) { padding ->
