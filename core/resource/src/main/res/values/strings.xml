@@ -35,7 +35,12 @@
     <string name="settings">Settings</string>
     <string name="pin_loc_biometric">Pin Lock/Biometric</string>
     <string name="more_options">More Options</string>
-    <string name="responsive_screen">Responsive Screen</string>
+    <string name="responsive_ui">Responsive UI</string>
+    <string name="music_player">Music Player</string>
+    <string name="material_theme">Material Theme</string>
+    <string name="news_app">News App</string>
+    <string name="chat_app">Chat App</string>
+    <string name="weather">Weather</string>
 
 
     <!-- Module :compose:featured -->
