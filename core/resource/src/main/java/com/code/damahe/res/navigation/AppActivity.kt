@@ -1,10 +1,11 @@
 package com.code.damahe.res.navigation
 
 object AppActivity {
-    const val PREFERENCE_ACTIVITY = "com.code.damahe.activity.PreferenceActivity"
+    const val PREVIEW_ACTIVITY = "com.code.damahe.activity.PreferenceActivity"
+    const val URL_ACTIVITY = "com.code.damahe.URLActivity"
 }
 
-object MainActivityNavigation {
+object NavigationRoute {
 
     // Featured
     const val badgeScreenNavRoute = "badgeScreenNavRoute"
