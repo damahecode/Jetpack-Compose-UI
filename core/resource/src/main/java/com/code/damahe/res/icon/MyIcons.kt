@@ -35,7 +35,6 @@ import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Settings
@@ -78,11 +77,13 @@ object MyIcons {
     val Lock = Icons.Filled.Lock
 
     val Palette = R.drawable.ic_palette_24dp
-    val History = R.drawable.ic_round_history_24dp
+    val Music_Library = R.drawable.ic_music_library_24dp
     val Android_Head = R.drawable.ic_android_head_24dp
     val AppIcon = R.drawable.ic_launcher_background
     val Policy = R.drawable.ic_policy_24dp
     val CodeTag = R.drawable.ic_code_tag_24dp
+    val News_Paper = R.drawable.ic_newspaper_24dp
+    val Solar_Power = R.drawable.ic_solar_power_24dp
 }
 
 /**
