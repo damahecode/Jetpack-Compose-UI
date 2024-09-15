@@ -37,32 +37,32 @@ import com.code.damahe.res.icon.MyIcons
 import com.code.damahe.ui.model.TopLevelDestination
 import com.code.damahe.ui.screen.main.FeaturedScreen
 import com.code.damahe.ui.screen.main.HomeScreen
-import com.code.damahe.res.navigation.MainActivityNavigation.animatedExtendedFloatingActionButtonSample
-import com.code.damahe.res.navigation.MainActivityNavigation.badgeScreenNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.bottomAppBarWithFabNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.bottomSheetScaffoldNestedScrollNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.buttonSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.cardSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.checkBoxes
-import com.code.damahe.res.navigation.MainActivityNavigation.chipSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.datePickerSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.dockedSearchBarSample
-import com.code.damahe.res.navigation.MainActivityNavigation.exitAlwaysBottomAppBarNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.floatingActionButtonSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.iconButtonSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.listSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.menuSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.modalBottomSheetNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.navigationBarSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.navigationRailSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.radioButtonSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.searchBarSample
-import com.code.damahe.res.navigation.MainActivityNavigation.segmentedButtonSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.simpleBottomAppBarNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.simpleBottomSheetScaffoldNavRoute
-import com.code.damahe.res.navigation.MainActivityNavigation.switchSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.tabSamples
-import com.code.damahe.res.navigation.MainActivityNavigation.textFieldSamples
+import com.code.damahe.res.navigation.NavigationRoute.animatedExtendedFloatingActionButtonSample
+import com.code.damahe.res.navigation.NavigationRoute.badgeScreenNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.bottomAppBarWithFabNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.bottomSheetScaffoldNestedScrollNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.buttonSamples
+import com.code.damahe.res.navigation.NavigationRoute.cardSamples
+import com.code.damahe.res.navigation.NavigationRoute.checkBoxes
+import com.code.damahe.res.navigation.NavigationRoute.chipSamples
+import com.code.damahe.res.navigation.NavigationRoute.datePickerSamples
+import com.code.damahe.res.navigation.NavigationRoute.dockedSearchBarSample
+import com.code.damahe.res.navigation.NavigationRoute.exitAlwaysBottomAppBarNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.floatingActionButtonSamples
+import com.code.damahe.res.navigation.NavigationRoute.iconButtonSamples
+import com.code.damahe.res.navigation.NavigationRoute.listSamples
+import com.code.damahe.res.navigation.NavigationRoute.menuSamples
+import com.code.damahe.res.navigation.NavigationRoute.modalBottomSheetNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.navigationBarSamples
+import com.code.damahe.res.navigation.NavigationRoute.navigationRailSamples
+import com.code.damahe.res.navigation.NavigationRoute.radioButtonSamples
+import com.code.damahe.res.navigation.NavigationRoute.searchBarSample
+import com.code.damahe.res.navigation.NavigationRoute.segmentedButtonSamples
+import com.code.damahe.res.navigation.NavigationRoute.simpleBottomAppBarNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.simpleBottomSheetScaffoldNavRoute
+import com.code.damahe.res.navigation.NavigationRoute.switchSamples
+import com.code.damahe.res.navigation.NavigationRoute.tabSamples
+import com.code.damahe.res.navigation.NavigationRoute.textFieldSamples
 import com.code.damahe.ui.screen.main.DemoUIScreen
 import com.code.damahe.ui.screen.main.TemplateScreen
 
@@ -105,7 +105,7 @@ fun MainNavHost(
     navAppState: MainNavAppState,
     modifier: Modifier = Modifier,
     onDrawerClicked: () -> Unit = {},
-    onPreviewClicked: (route: String) -> Unit = {}
+    onActivityClicked: (activity: String, route: String) -> Unit
 ) {
     val navController = navAppState.navController
 
@@ -117,30 +117,27 @@ fun MainNavHost(
         composable(MainRoute.HOME) {
             HomeScreen(
                 contentType = navAppState.contentType,
-                navigationType = navAppState.navigationType,
                 displayFeatures = navAppState.displayFeatures
             )
         }
         composable(MainRoute.FEATURED) {
             FeaturedScreen(
-                navigateToDestination = {
-                    navAppState.navigateToDestination(it)
-                },
-                onDrawerClicked = onDrawerClicked
+                navigateToDestination = { navAppState.navigateToDestination(it) }
             )
         }
         composable(MainRoute.DEMO_UI) {
             DemoUIScreen(
-                onClick = { featureList, _ ->
-                    onPreviewClicked(featureList.route)
+                onClick = { feature, _ ->
+                    onActivityClicked(feature.activity, feature.route)
                 }
             )
         }
         composable(MainRoute.TEMPLATE) {
             TemplateScreen(
-                onClick = { featureList, context ->
-                    when (featureList.name) {
-                        context.getString(R.string.responsive_screen) -> Toast.makeText(context, "Rotate your screen or test your App in different devices", Toast.LENGTH_LONG).show()
+                onClick = { feature, context ->
+                    when (feature.name) {
+                        context.getString(R.string.responsive_ui) -> Toast.makeText(context, "Rotate your screen or test your App in different devices", Toast.LENGTH_LONG).show()
+                        else -> onActivityClicked(feature.activity, feature.route)
                     }
                 }
             )
