@@ -1,41 +1,54 @@
 package com.code.damahe.ui.screen
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.material3.PermanentNavigationDrawer
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
+import com.code.damahe.material.dialogs.ThemeDialog
+import com.code.damahe.material.theme.DCodeBackground
+import com.code.damahe.material.theme.DCodeGradientBackground
+import com.code.damahe.material.theme.LocalGradientColors
 import com.code.damahe.res.R
+import com.code.damahe.res.icon.MyIcons
 import com.code.damahe.ui.utils.DCodeBottomNavigationBar
 import com.code.damahe.ui.utils.DCodeNavigationDrawerContent
 import com.code.damahe.ui.utils.DCodeNavigationRail
@@ -55,7 +68,7 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     windowSize: WindowSizeClass,
     displayFeatures: List<DisplayFeature>,
-    onPreviewClicked: (route: String) -> Unit = {}
+    onActivityClicked: (activity: String, route: String) -> Unit
 ) {
 //                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     /**
@@ -137,14 +150,45 @@ fun MainScreen(
             contentType = contentType,
             navigationContentPosition =  navigationContentPosition,
         ),
-        onPreviewClicked = onPreviewClicked
+        onActivityClicked = onActivityClicked
     )
+}
+
+@Composable
+fun SettingExtendedFloatingButton() {
+    val showThemeSettingsDialog = remember { mutableStateOf(false) }
+
+    if (showThemeSettingsDialog.value) {
+        ThemeDialog(
+            onDismiss = {showThemeSettingsDialog.value = false},
+        )
+    }
+
+    ExtendedFloatingActionButton(
+        onClick = { showThemeSettingsDialog.value = true },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp, bottom = 15.dp),
+        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+    ) {
+        Icon(
+            imageVector = MyIcons.Settings,
+            contentDescription = stringResource(id = R.string.txt_preferences),
+            modifier = Modifier.size(18.dp)
+        )
+        Text(
+            text = stringResource(id = R.string.txt_preferences),
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center
+        )
+    }
 }
 
 @Composable
 private fun DCodeNavigationWrapper(
     navAppState: MainNavAppState,
-    onPreviewClicked: (route: String) -> Unit = {}
+    onActivityClicked: (activity: String, route: String) -> Unit
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -159,32 +203,14 @@ private fun DCodeNavigationWrapper(
                 drawerContainerColor = MaterialTheme.colorScheme.inverseOnSurface,
             ) {
                 DCodeNavigationDrawerContent(
-                    title = stringResource(id = R.string.app_name).uppercase(),
+                    title = stringResource(id = R.string.app_name),
                     topLevelDestinations = MAIN_TOP_LEVEL_DESTINATIONS,
                     selectedDestination = navAppState.selectedDestination(navBackStackEntry),
                     navigationContentPosition = navAppState.navigationContentPosition,
                     navigateToTopLevelDestination = navAppState::navigateTo,
                     showBackButton = false,
                     extendedFloatingActionButton = {
-                        ExtendedFloatingActionButton(
-                            onClick = { /*TODO*/ },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 8.dp, bottom = 15.dp),
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Edit,
-                                contentDescription = stringResource(id = R.string.edit),
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(
-                                text = stringResource(id = R.string.compose),
-                                modifier = Modifier.weight(1f),
-                                textAlign = TextAlign.Center
-                            )
-                        }
+                        SettingExtendedFloatingButton()
                     }
                 )
             }
@@ -192,7 +218,7 @@ private fun DCodeNavigationWrapper(
             MainAppContent(
                 navAppState = navAppState,
                 selectedDestination = navAppState.selectedDestination(navBackStackEntry),
-                onPreviewClicked = onPreviewClicked
+                onActivityClicked = onActivityClicked
             )
         }
     } else {
@@ -213,7 +239,7 @@ private fun DCodeNavigationWrapper(
                     drawerContainerColor = MaterialTheme.colorScheme.inverseOnSurface,
                 ) {
                     DCodeNavigationDrawerContent(
-                        title = stringResource(id = R.string.app_name).uppercase(),
+                        title = stringResource(id = R.string.app_name),
                         topLevelDestinations = MAIN_TOP_LEVEL_DESTINATIONS,
                         selectedDestination = navAppState.selectedDestination(navBackStackEntry),
                         navigationContentPosition = navAppState.navigationContentPosition,
@@ -222,25 +248,7 @@ private fun DCodeNavigationWrapper(
                             onDrawerClicked()
                         },
                         extendedFloatingActionButton = {
-                            ExtendedFloatingActionButton(
-                                onClick = { /* TODO: */ },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 8.dp, bottom = 15.dp),
-                                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Edit,
-                                    contentDescription = stringResource(id = R.string.edit),
-                                    modifier = Modifier.size(18.dp)
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.compose),
-                                    modifier = Modifier.weight(1f),
-                                    textAlign = TextAlign.Center
-                                )
-                            }
+                            SettingExtendedFloatingButton()
                         }
                     )
                 }
@@ -253,23 +261,25 @@ private fun DCodeNavigationWrapper(
                 onDrawerClicked = {
                     onDrawerClicked()
                 },
-                onPreviewClicked = onPreviewClicked
+                onActivityClicked = onActivityClicked
             )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainAppContent(
     modifier: Modifier = Modifier,
     navAppState: MainNavAppState,
     selectedDestination: String,
     onDrawerClicked: () -> Unit = {},
-    onPreviewClicked: (route: String) -> Unit = {}
+    onActivityClicked: (activity: String, route: String) -> Unit
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         val typeRail = navAppState.navigationType == DCodeNavigationType.NAVIGATION_RAIL
         val typePerNavDrawer = navAppState.navigationType == DCodeNavigationType.PERMANENT_NAVIGATION_DRAWER
+
         AnimatedVisibility(visible = (typeRail || typePerNavDrawer)) {
             DCodeNavigationRail(
                 topLevelDestinations = MAIN_TOP_LEVEL_DESTINATIONS,
@@ -278,23 +288,54 @@ fun MainAppContent(
                 isPermanentNavDrawer = typePerNavDrawer,
             )
         }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
-        ) {
-            MainNavHost(
-                navAppState = navAppState,
-                modifier = Modifier.weight(1f),
-                onDrawerClicked = onDrawerClicked,
-                onPreviewClicked = onPreviewClicked
-            )
-            AnimatedVisibility(visible = navAppState.navigationType == DCodeNavigationType.BOTTOM_NAVIGATION) {
-                DCodeBottomNavigationBar(
-                    topLevelDestinations = MAIN_TOP_LEVEL_DESTINATIONS,
-                    selectedDestination = selectedDestination,
-                    navigateToTopLevelDestination = navAppState::navigateTo,
-                )
+
+        DCodeBackground {
+            DCodeGradientBackground(gradientColors = LocalGradientColors.current) {
+                Scaffold(
+                    containerColor = Color.Transparent,
+                    contentColor = MaterialTheme.colorScheme.onBackground,
+                    contentWindowInsets = WindowInsets.navigationBars.only(WindowInsetsSides.End),
+                    topBar = {
+                        if (!typePerNavDrawer) {
+                            TopAppBar(
+                                title = { Text(text = stringResource(id = R.string.app_name)) },
+                                navigationIcon = {
+                                    IconButton(onClick = onDrawerClicked) {
+                                        Icon(
+                                            imageVector = MyIcons.Menu,
+                                            contentDescription = stringResource(id = R.string.navigation_drawer),
+                                        )
+                                    }
+                                },
+                                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                                    containerColor = Color.Transparent,
+                                ),
+                                windowInsets = if (typeRail) WindowInsets(0) else TopAppBarDefaults.windowInsets
+                            )
+                        }
+                    },
+                ) { padding ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(padding)
+                    ) {
+                        MainNavHost(
+                            navAppState = navAppState,
+                            modifier = Modifier.weight(1f),
+                            onDrawerClicked = onDrawerClicked,
+                            onActivityClicked = onActivityClicked
+                        )
+
+                        AnimatedVisibility(visible = navAppState.navigationType == DCodeNavigationType.BOTTOM_NAVIGATION) {
+                            DCodeBottomNavigationBar(
+                                topLevelDestinations = MAIN_TOP_LEVEL_DESTINATIONS,
+                                selectedDestination = selectedDestination,
+                                navigateToTopLevelDestination = navAppState::navigateTo,
+                            )
+                        }
+                    }
+                }
             }
         }
     }
