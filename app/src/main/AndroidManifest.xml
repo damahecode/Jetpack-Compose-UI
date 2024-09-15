@@ -24,7 +24,7 @@
             android:name="com.code.damahe.activity.PreviewActivity"
             android:theme="@style/Theme.DCode.Material"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true"/>
+            android:exported="false"/>
 
     </application>
 
