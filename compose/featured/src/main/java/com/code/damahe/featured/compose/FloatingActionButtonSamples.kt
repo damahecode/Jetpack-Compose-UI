@@ -56,7 +56,7 @@ fun FloatingActionButtonSamples(onGoBack: () -> Unit) {
     Scaffold(
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.floating_action_buttons)) },
@@ -68,6 +68,7 @@ fun FloatingActionButtonSamples(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
     ) { padding ->
@@ -175,7 +176,7 @@ fun AnimatedExtendedFloatingActionButtonSample(onGoBack: () -> Unit) {
     Scaffold(
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets.safeContent,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.check_boxes)) },
@@ -187,6 +188,7 @@ fun AnimatedExtendedFloatingActionButtonSample(onGoBack: () -> Unit) {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent,
                 ),
+                windowInsets = WindowInsets(0)
             )
         },
         floatingActionButton = {
